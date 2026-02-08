@@ -1,7 +1,9 @@
-<h3 align="center">A passionate frontend developer from India</h3>
+<h3 align="center">Principal Cloud & Platform Architect from Germany</h3>
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
+  Principal Cloud & Platform Architect with 10+ years designing Kubernetes-based platforms and highly automated cloud infrastructure on AWS and Azure using Terraform and AWS CDK. Leads Infrastructure-as-Code driven platforms in regulated and enterprise environments, embedding security-by-design, zero trust, IAM, and policy guardrails into containerized workloads. Proven in fully remote, async teams across US-EU time zones, owning end‑to‑end architecture, CI/CD, and reliability for SaaS and multi-cloud environments.<img width="468" height="62" alt="image" src="https://github.com/user-attachments/assets/e83f839a-4dda-4923-aa4a-3fd1fcda1426" />
+
 </p>
 
 <h3 align="left">Languages and Tools:</h3>
