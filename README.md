@@ -10,28 +10,6 @@ I build Kubernetes and Terraform‑driven platforms, automate CI/CD, and increas
 - Automating infrastructure with Kubernetes, Docker, Terraform, GitHub/GitLab CI, Jenkins, Ansible, and Packer.
 - Orchestrating AI‑powered workflows (OpenAI, Gemini, Claude, Copilot, vector stores) using n8n and custom scripts.
 
-## Tech I use a lot
-
-**Cloud & Hosting**
-- Azure (VM, AKS, AAD/Entra, Defender)  
-- AWS (EC2, S3, ALB/NLB, IAM, GuardDuty)  
-- Linux, on‑premise & VPS hosting
-
-**DevOps & Automation**
-- Kubernetes, Docker  
-- Terraform, GitHub/GitLab CI, Jenkins  
-- Ansible, Packer
-
-**AI & Automation**
-- OpenAI, Gemini, Claude, GitHub Copilot  
-- n8n orchestration, prompt engineering, vector stores
-
-**Monitoring**
-- ELK Stack  
-- AWS / Azure Monitoring  
-- SolarWinds
-
-
 # 🚀 Expertise
 - **Located:** remote (US, EU) time zones
 - **Experience:** 10+ years in Cloud / Platform Engineering and DevOps.
