@@ -1,11 +1,63 @@
-<h3 align="center">Principal Cloud & Platform Architect from Germany</h3>
+# Hi, I'm Christian Weber 👋
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-  Principal Cloud & Platform Architect with 10+ years designing Kubernetes-based platforms and highly automated cloud infrastructure on AWS and Azure using Terraform and AWS CDK. Leads Infrastructure-as-Code driven platforms in regulated and enterprise environments, embedding security-by-design, zero trust, IAM, and policy guardrails into containerized workloads. Proven in fully remote, async teams across US-EU time zones, owning end‑to‑end architecture, CI/CD, and reliability for SaaS and multi-cloud environments.<img width="468" height="62" alt="image" src="https://github.com/user-attachments/assets/e83f839a-4dda-4923-aa4a-3fd1fcda1426" />
+Product & Cloud Platform Leader with 13+ years designing and running scalable environments across on‑prem, AWS, and Azure.[file:51]  
+I build Kubernetes and Terraform‑driven platforms, automate CI/CD, and increasingly use AI and workflow engines like n8n to remove toil.[file:51]
 
-</p>
+---
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://aws.amazon.com/amplify/" target="_blank" rel="noreferrer"> <img src="https://docs.amplify.aws/assets/logo-dark.svg" alt="amplify" width="40" height="40"/> </a> <a href="https://aws.amazon.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="40" height="40"/> </a> <a href="https://azure.microsoft.com/en-in/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" alt="azure" width="40" height="40"/> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> <a href="https://www.elastic.co" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/elastic/elastic-icon.svg" alt="elasticsearch" width="40" height="40"/> </a> <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://grafana.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/grafana/grafana-icon.svg" alt="grafana" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.jenkins.io" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg" alt="jenkins" width="40" height="40"/> </a> <a href="https://kubernetes.io" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="kubernetes" width="40" height="40"/> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> <a href="https://mariadb.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/mariadb/mariadb-icon.svg" alt="mariadb" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://nextjs.org/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" alt="nextjs" width="40" height="40"/> </a> <a href="https://postman.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> </a> <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/> </a> </p>
+## What I’m working on
 
+- Designing cloud platforms for SaaS and enterprise customers (Azure AKS, AWS EC2/S3/ALB, IAM, GuardDuty, Defender).[file:51]  
+- Automating infrastructure with Kubernetes, Docker, Terraform, GitHub/GitLab CI, Jenkins, Ansible, and Packer.[file:51]  
+- Orchestrating AI‑powered workflows (OpenAI, Gemini, Claude, Copilot, vector stores) using n8n and custom scripts.[file:51]  
+
+---
+
+## Tech I use a lot
+
+**Cloud & Hosting**
+
+- Azure (VM, AKS, AAD/Entra, Defender)  
+- AWS (EC2, S3, ALB/NLB, IAM, GuardDuty)  
+- Linux, on‑premise & VPS hosting[file:51]  
+
+**DevOps & Automation**
+
+- Kubernetes, Docker  
+- Terraform, GitHub/GitLab CI, Jenkins  
+- Ansible, Packer[file:51]  
+
+**AI & Automation**
+
+- OpenAI, Gemini, Claude, GitHub Copilot  
+- n8n orchestration, prompt engineering, vector stores[file:51]  
+
+**Monitoring**
+
+- ELK Stack  
+- AWS / Azure Monitoring  
+- SolarWinds[file:51]  
+
+---
+
+## How I think about architecture
+
+I lean on proven frameworks like IBM Architectural Thinking, AWS/Azure Well‑Architected, Cloud Adoption Frameworks, 6R Migration Strategies, TOGAF, ITIL, ARC42, and the 12‑Factor app principles.[file:51]  
+Most of my work combines these with practical constraints: cost, security, reliability, and speed of delivery.
+
+---
+
+## Selected experience (high level)
+
+- Built a global Kubernetes platform on Azure with Terraform and GitOps, improving provisioning time by 90% and hardening container security.[file:51]  
+- Led platform automation on a 90% automated AWS environment using CDK Python, supporting large enterprise workloads.[file:51]  
+- Implemented automation and cloud hosting optimizations at a major German health insurer, affecting 8.5M+ customers.[file:51]  
+
+---
+
+## Let’s connect
+
+- LinkedIn: [linkedin.com/in/christian-weber-0591](https://www.linkedin.com/in/christian-weber-0591/)[file:51]  
+- GitHub: [github.com/chriscloud27](https://github.com/chriscloud27)[file:51]  
+
+I’m open to collaborations around platform engineering, Kubernetes/IaC, and AI‑assisted automation.
