@@ -33,7 +33,6 @@ I build Kubernetes and Terraform‑driven platforms, automate CI/CD, and increas
 ![Static Badge](https://img.shields.io/badge/Packer-%23005CFF?style=for-the-badge&logo=packer&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/ELK%20Stack-%23000000?style=for-the-badge&logo=elasticstack&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/Azure%20Monitor-%230078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
-![Static Badge](https://img.shields.io/badge/SolarWinds-%23F68B1F?style=for-the-badge&logo=solarwinds&logoColor=white)
 
 # 🤖 AI & Automation
 ![Static Badge](https://img.shields.io/badge/OpenAI-%23412991?style=for-the-badge&logo=openai&logoColor=white)
