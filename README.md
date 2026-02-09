@@ -17,8 +17,6 @@ I build Kubernetes and Terraform‑driven platforms, automate CI/CD, and increas
 - **Roles:** CIO, Enterprise Architect, Cloud Architect, Tech Team Lead.
 - **Domains:** SaaS, enterprise platforms, regulated environments (healthcare, public sector).
 
----
-
 # 💻 Tech Stack
 ![Static Badge](https://img.shields.io/badge/Azure-%230078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/AWS-orange?style=for-the-badge&logo=amazonaws&logoColor=white)
@@ -44,3 +42,20 @@ I build Kubernetes and Terraform‑driven platforms, automate CI/CD, and increas
 ![Static Badge](https://img.shields.io/badge/macOS-%23000000?style=for-the-badge&logo=apple&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/VS%20Code-%23007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/Zsh%20%2F%20Bash-%234EAA25?style=for-the-badge&logo=gnubash&logoColor=white)
+
+# Stats
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=chriscloud27&show_icons=true&theme=radical)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=chriscloud27&layout=compact&theme=radical)
+
+# 🏆 Certifications
+![Static Badge](https://img.shields.io/badge/Terraform%20Associate-%23844FBA?style=for-the-badge&logo=terraform&logoColor=white)
+![Static Badge](https://img.shields.io/badge/AWS%20Solutions%20Architect%20Associate-orange?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Static Badge](https://img.shields.io/badge/Docker%20Administration%20and%20Operations-%232496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Static Badge](https://img.shields.io/badge/Cisco%20CCNA%20Network%20Fundamentals-%23049FD9?style=for-the-badge&logo=cisco&logoColor=white)
+- Capgemini Connected Manager
+- Toastmasters Competent Communicator
+- IBM Architectural Thinking
+- ITIL v3 Foundation
+
+---
+*Last updated: February 2026* | *Built with ❤️ on macOS*
