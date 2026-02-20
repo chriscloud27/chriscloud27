@@ -4,9 +4,9 @@
 
 I help SaaS CTOs design cloud platforms that deliver value faster, scale reliably, and stay cost-efficient—even as AI complexity grows.
 
-Principal AI-Native Platform Architect with 13+ years designing and enabling scalable Cloud platforms across AWS and Azure, including global engineering environments supporting up to 2,500 developers and AWS global partner award-winning platforms.
+> Principal AI-Native Platform Architect with 13+ years designing and enabling scalable Cloud platforms across AWS and Azure.
+> Including global engineering environments supporting up to 2,500 developers and AWS global partner award-winning platforms.
 
----
 
 # 🚀 What I Do
 
@@ -20,23 +20,11 @@ My focus is enabling engineering teams to build and operate scalable AI-native p
 - Improve platform scalability, reliability, and operational efficiency
 - Accelerate engineering velocity through automation and architecture clarity
 
----
-
-# 🧭 Architecture Leadership & Authority
-
-- **Global engineering platforms** — Led architecture for Azure platforms supporting 2,500+ developers  
-- **AWS global partner award-winning platform contribution** — Enabled scalable Cloud platform architecture supporting autonomous driving development  
-- **Published executive architecture guidance** — Co-authored Microsoft and Capgemini guidance on microservice and Kubernetes platform architecture on Azure  
-- **SaaS platform architecture and product leadership** — Responsible for product direction, platform architecture, and operational readiness of a SaaS platform  
-- **Backend-as-a-Service platform rollout (AWS Amplify)** — Enabled faster time-to-market and improved developer experience using managed Cloud infrastructure  
-- **Architecture enablement and leadership** — Certified Connected Manager (Capgemini University), enabling engineering organizations through architecture leadership  
-
----
 
 # 🏗️ Core Expertise
 
 **Cloud Platforms**
-- AWS, Azure
+- AWS, Azure, GCP
 - Landing zone and platform architecture
 - Multi-region and scalable infrastructure design
 
@@ -55,7 +43,6 @@ My focus is enabling engineering teams to build and operate scalable AI-native p
 - Engineering team enablement and guidance
 - Architecture decision frameworks and system scalability
 
----
 
 # 💻 Selected Technology Stack
 
@@ -66,7 +53,6 @@ My focus is enabling engineering teams to build and operate scalable AI-native p
 ![Static Badge](https://img.shields.io/badge/Docker-%232496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/GitHub%20CI-%23181717?style=for-the-badge&logo=github&logoColor=white)
 
----
 
 # 🤖 AI-Native Platform Enablement
 
@@ -77,7 +63,6 @@ Experience enabling infrastructure and platforms supporting AI-native workloads 
 - Architecture design enabling scalable AI integration
 - Platform foundations supporting AI-native system evolution
 
----
 
 # 🏆 Certifications & Leadership
 
@@ -87,7 +72,6 @@ Experience enabling infrastructure and platforms supporting AI-native workloads 
 - IBM Architectural Thinking  
 - ITIL Foundation  
 
----
 
 # 🎯 Focus
 
@@ -95,12 +79,11 @@ I focus on enabling SaaS companies to build scalable AI-native Cloud platforms b
 
 Architecture is not just infrastructure. It is the foundation that enables engineering teams to move faster and systems to scale reliably.
 
----
 
 # 📫 Connect
 
 - LinkedIn: https://linkedin.com/in/<your-profile>
-- GitHub: https://github.com/<your-username>
+- Calendly: https://calendly.com/chriscloud-weber
 
 ---
 
