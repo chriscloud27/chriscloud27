@@ -24,7 +24,7 @@
                 e.preventDefault();
                 
                 // Close mobile nav if open
-                const nav = document.querySelector('.nav-links');
+                const nav = document.querySelector('.nav-links, .nav__list');
                 if (nav) nav.classList.remove('active');
                 
                 // Smooth scroll to target
@@ -89,13 +89,13 @@
     const mobileNavToggle = () => {
         // Check if mobile toggle button exists
         let toggleBtn = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        const navLinks = document.querySelector('.nav-links, .nav__list');
         
         if (!navLinks) return;
         
         // Create toggle button if it doesn't exist
         if (!toggleBtn) {
-            const nav = document.querySelector('.site-nav');
+            const nav = document.querySelector('.site-nav') || document.querySelector('.header__container');
             if (!nav) return;
             
             toggleBtn = document.createElement('button');
@@ -123,7 +123,7 @@
         
         // Close nav when clicking outside
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('nav')) {
+            if (!e.target.closest('nav') && !e.target.closest('.header') && !e.target.closest('.site-header')) {
                 navLinks.classList.remove('active');
                 toggleBtn.classList.remove('active');
             }
@@ -143,18 +143,112 @@
     };
     
     // ============================================
-    // 4. INITIALIZE
+    // 4. PARTIAL INJECTION (Header & Footer)
+    // ============================================
+    
+    const loadPartial = (url) => {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.addEventListener('load', () => {
+                if (xhr.status === 200 || xhr.status === 0) {
+                    resolve(xhr.responseText);
+                } else {
+                    reject(new Error(`Failed to load ${url}: ${xhr.status}`));
+                }
+            });
+            xhr.addEventListener('error', () => {
+                reject(new Error(`Failed to load ${url}`));
+            });
+            xhr.send();
+        });
+    };
+    
+    const injectPartials = async () => {
+        try {
+            // Inject header
+            const headerContainer = document.getElementById('site-header');
+            if (headerContainer) {
+                const headerHTML = await loadPartial('partials/header.html');
+                headerContainer.innerHTML = headerHTML;
+            }
+            
+            // Inject footer
+            const footerContainer = document.getElementById('site-footer');
+            if (footerContainer) {
+                const footerHTML = await loadPartial('partials/footer.html');
+                footerContainer.innerHTML = footerHTML;
+                // Re-initialize mobile nav after header injection
+                mobileNavToggle();
+                // Set up contact form
+                setupContactForm();
+            }
+        } catch (e) {
+            console.warn('Could not inject partials:', e);
+        }
+    };
+    
+    // ============================================
+    // 5. CONTACT FORM HANDLER
+    // ============================================
+    
+    const setupContactForm = () => {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('.form-submit');
+            const messageDiv = document.getElementById('form-message');
+            
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    messageDiv.textContent = '✓ Message sent! We\'ll be in touch soon.';
+                    messageDiv.className = 'form-message form-message--success';
+                    form.reset();
+                    submitBtn.textContent = 'Send Message';
+                } else {
+                    throw new Error('Server responded with status ' + response.status);
+                }
+            } catch (error) {
+                messageDiv.textContent = '✗ Failed to send message. Please try emailing us directly.';
+                messageDiv.className = 'form-message form-message--error';
+                submitBtn.textContent = 'Send Message';
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+    };
+    
+    // ============================================
+    // 6. INITIALIZE
     // ============================================
     
     const init = () => {
-        smoothScroll();
-        mobileNavToggle();
-        
-        // Attach scroll listener with throttling
-        window.addEventListener('scroll', throttle(highlightActiveNav, 100));
-        
-        // Initial highlight
-        highlightActiveNav();
+        // Inject header and footer first
+        injectPartials().then(() => {
+            // Initialize features after partials are injected
+            smoothScroll();
+            
+            // Attach scroll listener with throttling
+            window.addEventListener('scroll', throttle(highlightActiveNav, 100));
+            
+            // Initial highlight
+            highlightActiveNav();
+        });
     };
     
     // Wait for DOM to be ready
