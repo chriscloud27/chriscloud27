@@ -142,51 +142,6 @@
         });
     };
     
-    // ============================================
-    // 4. PARTIAL INJECTION (Header & Footer)
-    // ============================================
-    
-    const loadPartial = (url) => {
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.addEventListener('load', () => {
-                if (xhr.status === 200 || xhr.status === 0) {
-                    resolve(xhr.responseText);
-                } else {
-                    reject(new Error(`Failed to load ${url}: ${xhr.status}`));
-                }
-            });
-            xhr.addEventListener('error', () => {
-                reject(new Error(`Failed to load ${url}`));
-            });
-            xhr.send();
-        });
-    };
-    
-    const injectPartials = async () => {
-        try {
-            // Inject header
-            const headerContainer = document.getElementById('site-header');
-            if (headerContainer) {
-                const headerHTML = await loadPartial('partials/header.html');
-                headerContainer.innerHTML = headerHTML;
-            }
-            
-            // Inject footer
-            const footerContainer = document.getElementById('site-footer');
-            if (footerContainer) {
-                const footerHTML = await loadPartial('partials/footer.html');
-                footerContainer.innerHTML = footerHTML;
-                // Re-initialize mobile nav after header injection
-                mobileNavToggle();
-                // Set up contact form
-                setupContactForm();
-            }
-        } catch (e) {
-            console.warn('Could not inject partials:', e);
-        }
-    };
     
     // ============================================
     // 5. CONTACT FORM HANDLER
@@ -238,17 +193,16 @@
     // ============================================
     
     const init = () => {
-        // Inject header and footer first
-        injectPartials().then(() => {
-            // Initialize features after partials are injected
-            smoothScroll();
-            
-            // Attach scroll listener with throttling
-            window.addEventListener('scroll', throttle(highlightActiveNav, 100));
-            
-            // Initial highlight
-            highlightActiveNav();
-        });
+        // Initialize features
+        smoothScroll();
+        mobileNavToggle();
+        setupContactForm();
+        
+        // Attach scroll listener with throttling
+        window.addEventListener('scroll', throttle(highlightActiveNav, 100));
+        
+        // Initial highlight
+        highlightActiveNav();
     };
     
     // Wait for DOM to be ready

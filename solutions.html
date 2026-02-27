@@ -10,9 +10,51 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <div id="site-header"></div>
+    <header class="header">
+    <div class="container header__container">
+        <a href="index.html" class="logo">
+            <span class="logo-icons">
+                <svg class="logo-icon-cloud" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 12c0-2.485-1.714-4.576-3.976-4.97C17.223 4.25 14.954 2.5 12.25 2.5c-2.276 0-4.348 1.482-5.256 3.573A4.001 4.001 0 0 0 3 11c0 2.21 1.79 4 4 4h13c1.657 0 3-1.343 3-3z"/>
+                </svg>
+            </span>
+            <span class="logo__name">mach2.cloud</span>
+        </a>
+        
+        <nav class="nav">
+            <ul class="nav__list">
+                <li><a href="index.html#portfolio" class="nav__link">Portfolio</a></li>
+                <li><a href="solutions.html" class="nav__link">Solutions</a></li>
+                <li><a href="about.html" class="nav__link">About</a></li>
+                <li><a href="index.html#services" class="nav__link">Services</a></li>
+                <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <a href="https://https://calendly.com/chriscloud-weber/30min" target="_blank" rel="noopener" class="btn btn--accent btn--sm header-btn">Book Clarity Call</a>
+
+        </div>
+    </div>
+</header>
 
     <main>
+        <!-- HERO SECTION -->
+        <section class="hero hero--centered">
+            <div class="container">
+                <div class="hero-content text-center">
+                    <h1>Cloud Platforms That Actually Work</h1>
+                    <p class="hero-subheadline">
+                        I design and build production-ready AWS and Azure platforms that accelerate your organization's ability to ship value at scale—with security and cost efficiency baked in from day one.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#case-studies" class="btn btn--accent btn--large">See Success Stories</a>
+                        <a href="https://https://calendly.com/chriscloud-weber/30min" target="_blank" rel="noopener" class="btn btn--outline">Book a Call</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- SALES SECTION -->
         <section class="section">
             <div class="container">
@@ -136,12 +178,69 @@
             <div class="container text-center">
                 <h2>Ready for Architectural Clarity?</h2>
                 <p class="cta-description">Book a free 1:1 call to discuss your platform roadmap.</p>
-                <a href="https://calendly.com/chriscloud-weber" target="_blank" rel="noopener" class="btn btn--accent btn--large">Book Intro Call</a>
+                <a href="https://https://calendly.com/chriscloud-weber/30min" target="_blank" rel="noopener" class="btn btn--accent btn--large">Book Intro Call</a>
             </div>
         </section>
     </main>
 
-    <div id="site-footer"></div>
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Column 1: Brand -->
+            <div class="footer-column">
+                <h4>Christian Weber</h4>
+                <p>Principal Cloud & AWS Solutions Architect</p>
+                <p>Supporting enterprise organizations building scalable, automated AWS platforms.</p>
+            </div>
+            
+            <!-- Column 2: Links -->
+            <div class="footer-column">
+                <h4>Links</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.linkedin.com/in/christian-weber-0591/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://github.com/chriscloud27" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://https://calendly.com/chriscloud-weber/30min" target="_blank" rel="noopener">Calendly</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 3: Contact Form -->
+            <div class="footer-column footer-column--form">
+                <h4>Get In Touch</h4>
+                <form id="contact-form" class="contact-form" action="https://flow.mach2.cloud" method="POST">
+                    <div class="form-group">
+                        <label for="contact-name" class="form-label">Name</label>
+                        <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-email" class="form-label">Email</label>
+                        <input type="email" id="contact-email" name="email" class="form-input" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-subject" class="form-label">Subject</label>
+                        <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="What's on your mind?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-message" class="form-label">Message</label>
+                        <textarea id="contact-message" name="message" class="form-input form-textarea" placeholder="Tell me about your project..." rows="4" required></textarea>
+                    </div>
+                    
+                    <input type="hidden" name="source" value="website-contact-form">
+                    
+                    <button type="submit" class="btn btn--accent btn--sm form-submit">Send Message</button>
+                    
+                    <div id="form-message" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024–2026 Christian Weber. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
     
     <script src="assets/js/main.js"></script>
 </body>

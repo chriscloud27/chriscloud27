@@ -284,7 +284,7 @@ Supporting SaaS companies building scalable, AI-powered platforms.
 #### Column 2: Links
 - LinkedIn: https://www.linkedin.com/in/christian-weber-0591/
 - GitHub: https://github.com/chriscloud27
-- Calendly: https://calendly.com/chriscloud-weber
+- Calendly: https://https://calendly.com/chriscloud-weber/30min
 - [Optional: Blog/Content if created]
 
 #### Column 3: Contact

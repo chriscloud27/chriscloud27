@@ -83,7 +83,7 @@ Architecture is not just infrastructure. It is the foundation that enables engin
 # 📫 Connect
 
 - LinkedIn: https://linkedin.com/in/<your-profile>
-- Calendly: https://calendly.com/chriscloud-weber
+- Calendly: https://https://calendly.com/chriscloud-weber/30min
 
 ---
 
