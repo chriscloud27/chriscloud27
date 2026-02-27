@@ -49,6 +49,7 @@ My focus is designing, optimizing and scaling cloud-agnostic, security-first pla
 
 ![Static Badge](https://img.shields.io/badge/AWS-orange?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/Azure-%230078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
+![Static Badge](https://img.shields.io/badge/GCP-%234285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/Kubernetes-%23326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/Terraform-%23844FBA?style=for-the-badge&logo=terraform&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/AWS%20Amplify-%23FF9900?style=for-the-badge&logo=awsamplify&logoColor=white)
