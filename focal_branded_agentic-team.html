@@ -1,0 +1,2429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>focal — Agentic Dream Team Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=IBM+Plex+Serif:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* focal Brand System */
+  --white: #FFFFFF;
+  --near-black: #1A1A1A;
+  --orange: #E8420A;
+  --orange-dark: #D94010;
+  --orange-dim: rgba(232,66,10,0.09);
+  --orange-dim2: rgba(232,66,10,0.18);
+  --light-gray: #F5F5F3;
+  --mid-gray: #E8E8E4;
+
+  /* Aliases used throughout */
+  --dark: #FFFFFF;
+  --dark2: #F5F5F3;
+  --dark3: #EFEFEB;
+  --indigo: #E8420A;
+  --indigo-light: #D94010;
+  --indigo-dim: rgba(232,66,10,0.09);
+  --green: #D94010;
+  --green-dim: rgba(217,64,16,0.08);
+  --paper: #1A1A1A;
+  --muted: #6B6B65;
+  --muted2: #9B9B93;
+  --border: rgba(26,26,26,0.09);
+  --border2: rgba(232,66,10,0.22);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: #FFFFFF;
+  color: #1A1A1A;
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── UTILITIES ─── */
+.mono { font-family: 'IBM Plex Mono', monospace; }
+.sans { font-family: 'DM Sans', sans-serif; }
+.serif { font-family: 'Playfair Display', serif; }
+.indigo { color: var(--indigo); }
+.green { color: var(--green); }
+.muted { color: var(--muted); }
+.tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  display: inline-block;
+}
+.tag-green {
+  color: var(--green);
+}
+.section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-left: 2px solid var(--indigo);
+  padding-left: 0.75rem;
+  margin-bottom: 2rem;
+}
+hr.rule { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+hr.rule-bright { border: none; border-top: 1px solid var(--border2); margin: 2rem 0; }
+
+/* ─── COVER PAGE ─── */
+.cover {
+  min-height: 100vh;
+  background: #1A1A1A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(232,66,10,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(232,66,10,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover-inner { max-width: 960px; position: relative; z-index: 1; }
+.cover-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.cover-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem; height: 1px;
+  background: var(--indigo);
+}
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: #FFFFFF;
+}
+.cover-title .accent { color: var(--indigo); font-style: italic; }
+.cover-subtitle {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+.cover-meta {
+  display: flex; gap: 3rem; flex-wrap: wrap;
+}
+.cover-meta-item { }
+.cover-meta-item .label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 0.3rem;
+}
+.cover-meta-item .value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--paper);
+}
+.cover-metrics {
+  margin-top: 4rem;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+}
+.cover-metric {
+  background: var(--dark3);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+}
+.cover-metric:first-child { border-left: 2px solid var(--indigo); }
+.cover-metric .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--indigo);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.cover-metric .desc {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── PAGE LAYOUT ─── */
+.page { max-width: 1080px; margin: 0 auto; padding: 5rem 4rem; }
+.page-wide { max-width: 1200px; margin: 0 auto; padding: 5rem 4rem; }
+
+/* ─── TOC ─── */
+.toc-section {
+  background: var(--dark2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 4rem;
+}
+.toc-inner { max-width: 1080px; margin: 0 auto; }
+.toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 3rem; margin-top: 2rem; }
+.toc-item {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none; color: inherit;
+}
+.toc-item:hover .toc-title { color: var(--indigo); }
+.toc-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--indigo);
+  min-width: 1.8rem;
+}
+.toc-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--paper);
+  transition: color 0.2s;
+}
+.toc-dots { flex: 1; border-bottom: 1px dotted var(--border); margin: 0 0.5rem 3px; }
+
+/* ─── SECTION HEADERS ─── */
+.section-header {
+  margin-bottom: 3rem;
+}
+.h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+.h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.75rem;
+}
+p { margin-bottom: 1.25rem; }
+p:last-child { margin-bottom: 0; }
+
+/* ─── EXEC SUMMARY ─── */
+.exec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 2.5rem 0; }
+.exec-card {
+  background: var(--dark3);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  position: relative;
+}
+.exec-card.highlight { border-top: 2px solid var(--indigo); }
+.exec-card.highlight-green { border-top: 2px solid var(--green); }
+.exec-card .stat {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--indigo);
+  line-height: 1;
+}
+.exec-card.highlight-green .stat { color: var(--green); }
+.exec-card .stat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.exec-card .stat-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  color: #5A5A52;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* ─── PROBLEM SECTION ─── */
+.problem-quote {
+  border-left: 3px solid var(--indigo);
+  padding: 1.5rem 2rem;
+  background: var(--indigo-dim);
+  margin: 2rem 0;
+}
+.problem-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--paper);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ─── BENCHMARK TABLE ─── */
+.bench-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+}
+.bench-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  border-bottom: 1px solid var(--border2);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  background: var(--dark3);
+}
+.bench-table td {
+  padding: 1rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+  color: #1A1A1A;
+}
+.bench-table tr:hover td { background: var(--dark3); }
+.bench-table .firm-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  color: var(--paper);
+  white-space: nowrap;
+}
+.bench-table .finding {
+  color: #1A1A1A;
+}
+.bench-table .implication {
+  color: var(--orange-dark);
+  font-size: 0.78rem;
+}
+.score-badge {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+.score-must { background: var(--indigo-dim); color: var(--indigo-light); border: 1px solid var(--border2); }
+.score-defer { background: rgba(107,114,128,0.15); color: var(--muted); border: 1px solid var(--border); }
+.score-watch { background: var(--green-dim); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+
+/* ─── AGENT CARDS ─── */
+.agent-card {
+  border: 1px solid var(--border);
+  margin: 2.5rem 0;
+  overflow: hidden;
+}
+.agent-header {
+  background: #1A1A1A;
+  border-bottom: 1px solid var(--border);
+  padding: 1.75rem 2rem;
+  display: flex; align-items: flex-start; gap: 2rem;
+}
+.agent-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--indigo);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+.agent-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #FFFFFF;
+}
+.agent-tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+}
+.agent-badge {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--indigo);
+  opacity: 0.3;
+}
+.agent-body {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+.agent-col {
+  padding: 1.5rem 1.75rem;
+  border-right: 1px solid var(--border);
+}
+.agent-col:last-child { border-right: none; }
+.agent-col-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.agent-list {
+  list-style: none;
+  padding: 0;
+}
+.agent-list li {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: #1F1F1F;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.45;
+  display: flex; align-items: flex-start; gap: 0.5rem;
+}
+.agent-list li::before {
+  content: '›';
+  color: var(--indigo);
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+.kpi-list li::before { color: var(--green); }
+
+.agent-mission {
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 0.88rem;
+  color: #1F1F1F;
+  line-height: 1.7;
+}
+.agent-mission .label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 0.5rem;
+}
+.agent-subagents {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+}
+.subagent-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-right: 0.5rem;
+}
+.subagent-chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  background: var(--dark3);
+  border: 1px solid var(--border2);
+  color: var(--indigo-light);
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+}
+.agent-prompt {
+  padding: 1.25rem 1.75rem;
+  background: #1A1A1A;
+}
+.agent-prompt .label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.75rem;
+}
+.prompt-block {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+.prompt-key { color: var(--indigo-light); }
+.prompt-val { color: rgba(255,255,255,0.65); }
+
+.agent-triggers {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.agent-triggers .label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 0.75rem;
+}
+.trigger-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  color: #3D3D35;
+  padding: 0.5rem 0.75rem;
+  border-left: 2px solid var(--border2);
+  margin-bottom: 0.4rem;
+  font-style: italic;
+  background: var(--dark3);
+}
+
+/* ─── DECISION LOG ─── */
+.decision-log { margin: 2rem 0; }
+.decision-row {
+  display: grid; grid-template-columns: 120px 1fr 140px 200px;
+  gap: 1rem; align-items: start;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.decision-row.header {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  padding-bottom: 0.75rem;
+}
+.decision-row .role-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--paper);
+}
+.decision-row .rationale {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: #3D3D35;
+  line-height: 1.5;
+}
+.decision-row .source {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+/* ─── LOOP CARDS ─── */
+.loop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+.loop-card {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.loop-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--indigo), var(--green));
+}
+.loop-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted2);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.loop-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--paper);
+}
+.loop-flow {
+  display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+.loop-agent {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  background: var(--indigo-dim);
+  border: 1px solid var(--border2);
+  color: var(--indigo-light);
+  padding: 0.2rem 0.45rem;
+}
+.loop-arrow {
+  color: var(--indigo);
+  font-size: 0.75rem;
+}
+.loop-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: #3D3D35;
+  line-height: 1.55;
+}
+
+/* ─── OPERATING PLAN ─── */
+.phases { margin: 2rem 0; }
+.phase {
+  border: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+.phase-header {
+  display: grid; grid-template-columns: 160px 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.phase-num {
+  background: var(--indigo-dim);
+  border-right: 1px solid var(--border2);
+  padding: 1.25rem 1.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.phase-num .big {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--indigo);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.phase-title-block {
+  padding: 1.25rem 1.5rem;
+}
+.phase-title-block .title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.phase-title-block .timespan {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+.phase-body {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+}
+.phase-col {
+  padding: 1.25rem 1.5rem;
+  border-right: 1px solid var(--border);
+}
+.phase-col:last-child { border-right: none; }
+.phase-col-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 0.75rem;
+}
+.metric-item {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: #1F1F1F;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.4;
+}
+.metric-item .dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.metric-item .dot-indigo { background: var(--indigo); }
+
+/* ─── CONCLUSION ─── */
+.conclusion {
+  background: #1A1A1A;
+  border-top: 1px solid var(--border);
+  padding: 6rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.conclusion::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(232,66,10,0.10) 0%, transparent 65%);
+}
+.conclusion-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+.conclusion-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.4;
+  color: #FFFFFF;
+  margin-bottom: 2rem;
+}
+.conclusion-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.conclusion-principle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--indigo);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--border2);
+  padding-top: 2rem;
+  margin-top: 3rem;
+}
+
+/* ─── ADVISORY FINDINGS ─── */
+.finding-card {
+  border: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+.finding-header {
+  display: grid; grid-template-columns: 200px 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.finding-firm {
+  background: #1A1A1A;
+  border-right: 1px solid rgba(255,255,255,0.10);
+  padding: 1.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.finding-firm .name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #FFFFFF;
+}
+.finding-firm .type {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.finding-summary {
+  padding: 1.5rem;
+  background: var(--light-gray);
+}
+.finding-body {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+}
+.finding-section {
+  padding: 1.25rem 1.5rem;
+  border-right: 1px solid var(--border);
+}
+.finding-section:last-child { border-right: none; }
+.finding-section-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 0.75rem;
+}
+.finding-point {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: #1F1F1F;
+  padding: 0.35rem 0 0.35rem 0.75rem;
+  border-left: 2px solid var(--border2);
+  margin-bottom: 0.5rem;
+  line-height: 1.45;
+}
+.finding-point.green { border-left-color: var(--green); }
+
+/* ─── ORG CHART VISUAL ─── */
+.org-chart {
+  margin: 2rem 0;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.org-row { display: flex; justify-content: center; gap: 1rem; margin-bottom: 0.75rem; }
+.org-node {
+  background: var(--dark3);
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: #1F1F1F;
+  text-align: center;
+  min-width: 90px;
+}
+.org-node.primary { border-color: var(--indigo); color: var(--indigo-light); }
+.org-node.dev { border-color: var(--green); color: var(--green); }
+.org-connector {
+  width: 1px; height: 20px;
+  background: var(--border2);
+  margin: 0 auto;
+}
+.org-hline {
+  display: flex; align-items: center;
+  gap: 0;
+  margin-bottom: 0;
+  position: relative;
+}
+
+/* ─── INLINE CALLOUT ─── */
+.callout {
+  background: var(--dark3);
+  border: 1px solid var(--border2);
+  border-left: 3px solid var(--indigo);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.callout-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  margin-bottom: 0.5rem;
+}
+.callout p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  color: #1F1F1F;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ─── BODY TEXT ─── */
+.body-text {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 0.92rem;
+  color: #1F1F1F;
+  line-height: 1.8;
+}
+.body-text p { margin-bottom: 1.25rem; }
+
+/* ─── PRINT STYLES ─── */
+@media print {
+  body { background: white; color: black; }
+  .cover { background: white; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- COVER -->
+<!-- ═══════════════════════════════════════ -->
+<section class="cover" id="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">
+      focal · Head of Technology &amp; Applied AI
+    </div>
+    <h1 class="cover-title">
+      Agentic<br><span class="accent">Dream Team</span><br>Blueprint
+    </h1>
+    <p class="cover-subtitle">
+      The complete AI-native operating system for a 5-person firm that sees sooner, decides faster, and compounds structural edge across every founder, deal, and outcome.
+    </p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="label">Document Type</div>
+        <div class="value">Founding Operational Strategy</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">Classification</div>
+        <div class="value">GP Internal · Confidential</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">Vintage</div>
+        <div class="value">Fund II · 2025</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">Version</div>
+        <div class="value">v1.0 · Master Blueprint</div>
+      </div>
+    </div>
+    <div class="cover-metrics">
+      <div class="cover-metric">
+        <div class="num">8</div>
+        <div class="desc">Board Agents</div>
+      </div>
+      <div class="cover-metric">
+        <div class="num">32</div>
+        <div class="desc">Sub-Agents</div>
+      </div>
+      <div class="cover-metric">
+        <div class="num">12</div>
+        <div class="desc">Compounding Loops</div>
+      </div>
+      <div class="cover-metric">
+        <div class="num">50×</div>
+        <div class="desc">Team Leverage Target</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- STATS BAR -->
+<div style="background:#D94010;padding:1.25rem 4rem;display:flex;gap:4rem;align-items:center;flex-wrap:wrap;">
+  <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#FFFFFF;line-height:1;">8</div><div style="font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:0.3rem;">Board Agents</div></div>
+  <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#FFFFFF;line-height:1;">32</div><div style="font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:0.3rem;">Sub-Agents</div></div>
+  <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#FFFFFF;line-height:1;">4</div><div style="font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:0.3rem;">Dev Functions</div></div>
+  <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#FFFFFF;line-height:1;">12</div><div style="font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:0.3rem;">Compounding Loops</div></div>
+  <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#FFFFFF;line-height:1;">50×</div><div style="font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:0.3rem;">Leverage Target</div></div>
+  <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#FFFFFF;line-height:1;">&lt;48h</div><div style="font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:0.3rem;">Signal → Conviction</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TABLE OF CONTENTS -->
+<!-- ═══════════════════════════════════════ -->
+<section class="toc-section">
+  <div class="toc-inner">
+    <div class="section-label">Navigation</div>
+    <h2 class="h2" style="margin-bottom:0.5rem;">Table of Contents</h2>
+    <p class="mono muted" style="font-size:0.7rem; margin-bottom:1.5rem;">10 sections · Master founding document</p>
+    <div class="toc-grid">
+      <a href="#exec" class="toc-item">
+        <span class="toc-num">01</span>
+        <span class="toc-title">Executive Summary</span>
+        <span class="toc-dots"></span>
+      </a>
+      <a href="#problem" class="toc-item">
+        <span class="toc-num">02</span>
+        <span class="toc-title">The Structural Problem</span>
+        <span class="toc-dots"></span>
+      </a>
+      <a href="#benchmark-method" class="toc-item">
+        <span class="toc-num">03</span>
+        <span class="toc-title">Benchmark Methodology</span>
+        <span class="toc-dots"></span>
+      </a>
+      <a href="#advisory" class="toc-item">
+        <span class="toc-num">04</span>
+        <span class="toc-title">Advisory Findings</span>
+        <span class="toc-dots"></span>
+      </a>
+      <a href="#comparators" class="toc-item">
+        <span class="toc-num">05</span>
+        <span class="toc-title">Comparator Pattern Analysis</span>
+        <span class="toc-dots"></span>
+      </a>
+      <a href="#decision-log" class="toc-item">
+        <span class="toc-num">06</span>
+        <span class="toc-title">Decision Log</span>
+        <span class="toc-dots"></span>
+      </a>
+      <a href="#architecture" class="toc-item">
+        <span class="toc-num">07</span>
+        <span class="toc-title">Dream Team Architecture</span>
+        <span class="toc-dots"></span>
+      </a>
+      <a href="#loops" class="toc-item">
+        <span class="toc-num">08</span>
+        <span class="toc-title">Compounding Interaction Map</span>
+        <span class="toc-dots"></span>
+      </a>
+      <a href="#operating-plan" class="toc-item">
+        <span class="toc-num">09</span>
+        <span class="toc-title">Operating Plan: $0 → Systematic Edge</span>
+        <span class="toc-dots"></span>
+      </a>
+      <a href="#conclusion" class="toc-item">
+        <span class="toc-num">10</span>
+        <span class="toc-title">Conclusion</span>
+        <span class="toc-dots"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 01 EXECUTIVE SUMMARY -->
+<!-- ═══════════════════════════════════════ -->
+<section id="exec">
+  <div class="page">
+    <div class="section-label">Section 01</div>
+    <div class="section-header">
+      <h2 class="h1">Executive Summary</h2>
+    </div>
+
+    <div class="exec-grid">
+      <div class="exec-card highlight">
+        <div class="stat-label">Board Agents Deployed</div>
+        <div class="stat">8</div>
+        <div class="stat-desc">A1–A8 covering sourcing, intelligence, relationships, portfolio, market, operations, brand, and quality</div>
+      </div>
+      <div class="exec-card highlight">
+        <div class="stat-label">Specialist Sub-Agents</div>
+        <div class="stat">32</div>
+        <div class="stat-desc">4 per board agent — domain-specific execution at depth beneath each strategic coordinator</div>
+      </div>
+      <div class="exec-card highlight">
+        <div class="stat-label">Developer Functions</div>
+        <div class="stat">4</div>
+        <div class="stat-desc">D1–D4 building the technical substrate: tooling, embeddings, automation, and platform reliability</div>
+      </div>
+      <div class="exec-card highlight-green">
+        <div class="stat-label">Sourcing Velocity Target</div>
+        <div class="stat">50+</div>
+        <div class="stat-desc">Founders per week surfaced via proprietary signal intelligence — GitHub, papers, communities, networks</div>
+      </div>
+      <div class="exec-card highlight-green">
+        <div class="stat-label">Decision Throughput</div>
+        <div class="stat">&lt;48h</div>
+        <div class="stat-desc">Target time from first signal to GP conviction brief — enabled by CIO decision brain and CQO quality gates</div>
+      </div>
+      <div class="exec-card highlight-green">
+        <div class="stat-label">Portfolio Reach</div>
+        <div class="stat">100+</div>
+        <div class="stat-desc">Technical founders with Head of Tech as peer — enabled by CPO platform agent operating at portfolio scale</div>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p>focal is a 5-person venture firm building the structural advantage that 50-person firms cannot replicate: an AI-native operating system designed from first principles for inception-stage investing. The edge is not more people. It is an agentic architecture that compounds across every signal detected, every founder relationship maintained, and every investment decision made.</p>
+      <p>This blueprint documents the complete Agentic Dream Team — 8 board-level AI agents, 32 specialist sub-agents, and 4 developer functions — designed specifically for the dynamics of pre-incorporation venture capital. Each agent operates autonomously, feeds outputs to adjacent agents, and improves its own performance with every interaction. The result is a flywheel: the system becomes structurally better at finding, evaluating, and supporting founders the longer it operates.</p>
+      <p>The design benchmarks against McKinsey, BCG, Deloitte, EY, a16z, Sequoia, and YC — and applies the non-obvious lessons from each: that the CQO is non-negotiable, that relationship capital decays without systematic maintenance, and that sourcing edge comes from novel signal detection, not better LinkedIn searches.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:1080px;margin:0 auto;">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 02 THE STRUCTURAL PROBLEM -->
+<!-- ═══════════════════════════════════════ -->
+<section id="problem">
+  <div class="page">
+    <div class="section-label">Section 02</div>
+    <div class="section-header">
+      <h2 class="h1">The Structural Problem</h2>
+    </div>
+
+    <div class="problem-quote">
+      <p>"The best founders are decided in days, not weeks. Most firms are still running on spreadsheets and gut instinct. focal won't."</p>
+    </div>
+
+    <div class="body-text">
+      <p>Venture capital, at its structural core, is an information-asymmetry business. The firms that win do so by seeing talent earlier, constructing conviction faster, and maintaining relationships with more depth and precision than their competitors. The problem is that the operational model of most VC firms — regardless of AUM — is built on three fundamentally brittle foundations:</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;margin:2rem 0;">
+      <div style="background:var(--dark3);border:1px solid var(--border);padding:1.75rem;border-top:2px solid #EF4444;">
+        <div class="tag" style="color:#EF4444;margin-bottom:0.75rem;">Failure Mode 01</div>
+        <div class="h3">Signal Scarcity</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:#3D3D35;line-height:1.55;margin:0;">Sourcing is reactive — inbound, warm intros, and conference circuits. The founders building the next category don't appear at demo days. They're committing code at 2am, publishing papers, and shipping open-source libraries. No spreadsheet surfaces them.</p>
+      </div>
+      <div style="background:var(--dark3);border:1px solid var(--border);padding:1.75rem;border-top:2px solid #F59E0B;">
+        <div class="tag" style="color:#C47A00;margin-bottom:0.75rem;">Failure Mode 02</div>
+        <div class="h3">Conviction Decay</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:#3D3D35;line-height:1.55;margin:0;">Investment decisions are made by individuals with individual biases, pulling from unstructured notes and fragmented CRM data. Every term sheet that doesn't close leaves no data artifact. Every missed pattern costs the next decision too.</p>
+      </div>
+      <div style="background:var(--dark3);border:1px solid var(--border);padding:1.75rem;border-top:2px solid var(--indigo);">
+        <div class="tag" style="margin-bottom:0.75rem;">Failure Mode 03</div>
+        <div class="h3">Relationship Decay</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:#3D3D35;line-height:1.55;margin:0;">Relationship capital decays precisely. A founder remembered after 6 months of silence is a founder who chose another firm. The CRM has their email. No one tracked their GitHub commit velocity. No agent followed up at the right moment.</p>
+      </div>
+    </div>
+
+    <div class="body-text">
+      <p>For a 50-person firm, these failure modes are survivable — there are enough analysts, associates, and partners to compensate with brute force. For a 5-person firm competing at the same inception stage, they are fatal — unless the firm is structurally different from the ground up.</p>
+      <p>focal's structural answer is not to hire more people. It is to build an agentic operating system where each failure mode is addressed by a purpose-designed agent operating continuously, compounding knowledge, and feeding outputs to adjacent agents in documented feedback loops. The system doesn't replace the GPs — it amplifies them. It handles the systematic layer so the GPs can operate at the conviction layer.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Design Principle</div>
+      <p>Every operational failure that could cost a GP 30 minutes per week should be owned by an agent. Every relationship touchpoint that requires memory and precision should be owned by an agent. The GPs' time belongs to founders — not to CRM hygiene, LP email drafts, or market scanning that a system can do better.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:1080px;margin:0 auto;">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 03 BENCHMARK METHODOLOGY -->
+<!-- ═══════════════════════════════════════ -->
+<section id="benchmark-method">
+  <div class="page">
+    <div class="section-label">Section 03</div>
+    <div class="section-header">
+      <h2 class="h1">Benchmark Methodology</h2>
+    </div>
+
+    <div class="body-text">
+      <p>The agent architecture is not designed from first principles alone. Each role decision is grounded in patterns observed across 9 benchmark organizations — 4 advisory/consulting firms and 5 VC/tech comparators — evaluated against three focal-specific criteria: applicability to a 5-person inception-stage firm, signal velocity requirements, and relationship-as-product constraints.</p>
+    </div>
+
+    <div style="margin:2rem 0;">
+      <table class="bench-table">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Evaluation Criteria</th>
+            <th>Weight</th>
+            <th>Decision</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="firm-name">McKinsey</td>
+            <td>Superteam principle, decision velocity, structured knowledge transfer protocols</td>
+            <td><span class="mono" style="font-size:0.7rem;color:var(--indigo);">High</span></td>
+            <td><span class="score-badge score-must">MUST</span></td>
+          </tr>
+          <tr>
+            <td class="firm-name">BCG Bionic Org</td>
+            <td>AI amplification of T-shaped roles, proprietary IP as moat, quality gate requirement</td>
+            <td><span class="mono" style="font-size:0.7rem;color:var(--indigo);">High</span></td>
+            <td><span class="score-badge score-must">MUST</span></td>
+          </tr>
+          <tr>
+            <td class="firm-name">Deloitte Human Capital</td>
+            <td>Network of teams model, QA function, legal/compliance tracking</td>
+            <td><span class="mono" style="font-size:0.7rem;color:var(--indigo);">Medium</span></td>
+            <td><span class="score-badge score-watch">WATCH</span></td>
+          </tr>
+          <tr>
+            <td class="firm-name">EY Future of Work</td>
+            <td>Human intent + AI execution split, new superjob definition, ops layer separation</td>
+            <td><span class="mono" style="font-size:0.7rem;color:var(--indigo);">Medium</span></td>
+            <td><span class="score-badge score-watch">WATCH</span></td>
+          </tr>
+          <tr>
+            <td class="firm-name">a16z (internal AI)</td>
+            <td>Sourcing automation, diligence AI, portfolio support systems at scale</td>
+            <td><span class="mono" style="font-size:0.7rem;color:var(--indigo);">Critical</span></td>
+            <td><span class="score-badge score-must">MUST</span></td>
+          </tr>
+          <tr>
+            <td class="firm-name">Sequoia</td>
+            <td>Signal intelligence infrastructure, pattern recognition at portfolio scale</td>
+            <td><span class="mono" style="font-size:0.7rem;color:var(--indigo);">High</span></td>
+            <td><span class="score-badge score-must">MUST</span></td>
+          </tr>
+          <tr>
+            <td class="firm-name">Y Combinator</td>
+            <td>Community as systematic sourcing advantage, network density as defensibility</td>
+            <td><span class="mono" style="font-size:0.7rem;color:var(--indigo);">High</span></td>
+            <td><span class="score-badge score-must">MUST</span></td>
+          </tr>
+          <tr>
+            <td class="firm-name">Contrary Capital</td>
+            <td>Community-driven sourcing model, campus-to-pre-seed pipeline mechanics</td>
+            <td><span class="mono" style="font-size:0.7rem;color:var(--indigo);">Medium</span></td>
+            <td><span class="score-badge score-watch">WATCH</span></td>
+          </tr>
+          <tr>
+            <td class="firm-name">Zapier / Notion Ops</td>
+            <td>Small-team operational leverage via automation, internal AI ops patterns</td>
+            <td><span class="mono" style="font-size:0.7rem;color:var(--indigo);">High</span></td>
+            <td><span class="score-badge score-must">MUST</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-text">
+      <p>Evaluation was structured as: (1) role necessity — does the organizational function exist in the benchmark and produce measurable outcome? (2) focal applicability — can the function be executed by an AI agent at the required velocity given focal's deal flow dynamics? (3) compounding potential — does the output of this function improve future performance of other agents?</p>
+      <p>Roles that scored "MUST" on all three criteria were non-negotiable inclusions. Roles scoring "WATCH" were included where the function is addressable by a sub-agent of an existing board agent rather than requiring a dedicated position. Roles scoring "DEFER" were parked to Phase 2 pending proof-of-concept signal from Phase 1 operations.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:1080px;margin:0 auto;">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 04 ADVISORY FINDINGS -->
+<!-- ═══════════════════════════════════════ -->
+<section id="advisory">
+  <div class="page">
+    <div class="section-label">Section 04</div>
+    <div class="section-header">
+      <h2 class="h1">Advisory Findings</h2>
+    </div>
+
+    <!-- McKinsey -->
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="finding-firm">
+          <div class="name">McKinsey</div>
+          <div class="type">Management Consulting</div>
+        </div>
+        <div class="finding-summary">
+          <div class="h3" style="margin-bottom:0.5rem;">Superteam Principle → focal's 5×50 Model</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:#3D3D35;line-height:1.55;margin:0;">McKinsey's superteam architecture — small elite teams amplified by proprietary tools and structured knowledge protocols — is the direct organizational ancestor of focal's agentic model. The key insight is that leverage comes from systematizing institutional knowledge, not from headcount.</p>
+        </div>
+      </div>
+      <div class="finding-body">
+        <div class="finding-section">
+          <div class="finding-section-title">Key Findings for focal</div>
+          <div class="finding-point">Superteam principle: 5 people with the right tools outperform 50 with brute force — if knowledge is systematically captured and reused</div>
+          <div class="finding-point">Decision velocity requires pre-built frameworks — every decision that can be templated should be, so unique judgment is spent on genuinely novel problems</div>
+          <div class="finding-point">Knowledge transfer must be structured — not stored in individual heads. Every exit interview, every deal debrief, every pattern must leave a data artifact</div>
+        </div>
+        <div class="finding-section">
+          <div class="finding-section-title">Organizational Implication</div>
+          <div class="finding-point green">Directly implies the CIO — a dedicated "brain" agent whose sole function is compounding institutional knowledge so every decision leaves a data artifact that makes the next decision better</div>
+          <div class="finding-point green">Implies the CQO — quality gates can only function if there is a structured evaluation framework that a small team can apply consistently under time pressure</div>
+          <div class="finding-point green">Implies decision throughput SLAs — the 48-hour target from first signal to conviction brief is achievable only with pre-built evaluation rubrics in the CIO knowledge base</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BCG -->
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="finding-firm">
+          <div class="name">BCG</div>
+          <div class="type">Bionic Organization</div>
+        </div>
+        <div class="finding-summary">
+          <div class="h3" style="margin-bottom:0.5rem;">Bionic Model → Quality Gates Are Non-Negotiable</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:#3D3D35;line-height:1.55;margin:0;">BCG's Bionic Organization model argues that AI amplification of T-shaped humans requires explicit quality control layers — not implicit ones. The more AI automates execution, the more critical human-designed quality gates become. For focal, this maps directly to the CQO mandate.</p>
+        </div>
+      </div>
+      <div class="finding-body">
+        <div class="finding-section">
+          <div class="finding-section-title">Key Findings for focal</div>
+          <div class="finding-point">Bionic firms build proprietary IP as moat — not just workflows. The firm's data, patterns, and decision frameworks become defensible assets that compound over time</div>
+          <div class="finding-point">T-shaped amplification: generalists who can go deep on demand. focal's GPs must be able to call any agent for domain-specific depth instantly, without context-switching overhead</div>
+          <div class="finding-point">Quality gates must be explicit, not implicit — speed without quality control produces systematic errors at exactly the wrong moment (term sheet evaluation, founder assessment)</div>
+        </div>
+        <div class="finding-section">
+          <div class="finding-section-title">Organizational Implication</div>
+          <div class="finding-point green">Directly and specifically implies the CQO role as non-negotiable. No VC firm operating at speed should skip this — the failure mode is systematically overfitting to pattern-matched founders while missing outliers</div>
+          <div class="finding-point green">Implies the CIO must produce proprietary IP — the pattern database, the founder evaluation rubric, the market map — not just retrieve information on demand</div>
+          <div class="finding-point green">Implies the developer team must be resourced to build data infrastructure, not just automation — the embedding store is focal's proprietary moat, not the LLM</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- a16z -->
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="finding-firm">
+          <div class="name">a16z</div>
+          <div class="type">Venture Capital</div>
+        </div>
+        <div class="finding-summary">
+          <div class="h3" style="margin-bottom:0.5rem;">Operational Scale → Platform as Investment Thesis</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:#3D3D35;line-height:1.55;margin:0;">a16z's internal AI usage — for sourcing pattern detection, diligence augmentation, and portfolio support at scale — represents the benchmark that focal is explicitly designed to exceed. With 5 people and an agentic OS, focal can approximate the portfolio support density that a16z achieves with 200.</p>
+        </div>
+      </div>
+      <div class="finding-body">
+        <div class="finding-section">
+          <div class="finding-section-title">Key Findings for focal</div>
+          <div class="finding-point">a16z runs dedicated platform teams (talent, marketing, technical) for portfolio — this signals that portfolio support is a competitive moat, not a nice-to-have</div>
+          <div class="finding-point">Internal AI usage for sourcing: monitoring technical communities, GitHub ecosystems, and academic publication networks for pre-fund signals</div>
+          <div class="finding-point">Content and brand investment: a16z's media presence directly drives deal flow from founders who want to work with the firm's brand, not just its capital</div>
+        </div>
+        <div class="finding-section">
+          <div class="finding-section-title">Organizational Implication</div>
+          <div class="finding-point green">Directly implies CPO — the platform agent. Portfolio support is focal's competitive moat with a 5-person team. The Head of Tech as peer to 100+ founders is only possible with an agent handling systematic portfolio intelligence</div>
+          <div class="finding-point green">Implies CCO — brand presence among technical founders drives pre-fund deal flow. focal must be known by the founders before focal knows the founders</div>
+          <div class="finding-point green">Implies CSO signal intelligence design: GitHub monitoring, paper citation tracking, and community surveillance are table stakes, not innovations</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YC -->
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="finding-firm">
+          <div class="name">Y Combinator</div>
+          <div class="type">Accelerator / Venture</div>
+        </div>
+        <div class="finding-summary">
+          <div class="h3" style="margin-bottom:0.5rem;">Community Density → Network as Systematic Advantage</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:#3D3D35;line-height:1.55;margin:0;">YC's structural moat is not its curriculum or its checks — it is the density of its alumni network and the systematic way it maintains relationship capital across decades. focal cannot build a 30-year alumni network in year one, but it can build the infrastructure that compounds relationship capital from day one.</p>
+        </div>
+      </div>
+      <div class="finding-body">
+        <div class="finding-section">
+          <div class="finding-section-title">Key Findings for focal</div>
+          <div class="finding-point">Network density is the moat — the more founders who know focal, the more inbound deal flow arrives without outreach cost</div>
+          <div class="finding-point">Community participation creates pre-fund relationships — YC's batch model means every founder knows every partner before any check is written</div>
+          <div class="finding-point">Alumni network as diligence tool — YC uses network references to evaluate founders faster than any data source can</div>
+        </div>
+        <div class="finding-section">
+          <div class="finding-section-title">Organizational Implication</div>
+          <div class="finding-point green">Directly implies CRO — relationship capital must be systematically maintained, not occasionally remembered. The relationship graph is focal's network moat in development</div>
+          <div class="finding-point green">Implies that alumni tracking (Recurse, Interact, YC, Hacker News community) is a first-order sourcing signal for CSO — the pre-YC layer is where focal finds founders before YC does</div>
+          <div class="finding-point green">Implies community building as a content strategy for CCO — not just brand presence, but active participation in the technical communities where the founders live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:1080px;margin:0 auto;">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 05 COMPARATOR ANALYSIS -->
+<!-- ═══════════════════════════════════════ -->
+<section id="comparators">
+  <div class="page">
+    <div class="section-label">Section 05</div>
+    <div class="section-header">
+      <h2 class="h1">Comparator Pattern Analysis</h2>
+    </div>
+    <div class="body-text">
+      <p>Five VC-adjacent and infrastructure firms represent the operational trajectory focal is explicitly building toward — not replicating, but extracting the structural patterns that survive contact with real deal flow at scale.</p>
+    </div>
+    <table class="bench-table" style="margin-top:2rem;">
+      <thead>
+        <tr>
+          <th>Firm</th>
+          <th>Core Pattern</th>
+          <th>What focal Extracts</th>
+          <th>Agent Implication</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="firm-name">Contrary Capital</td>
+          <td class="finding">Community-driven sourcing — campus scouts detecting founders at graduation velocity, before any accelerator sees them</td>
+          <td>Pre-fund sourcing in technical communities is systematically more effective than post-incorporation discovery. The signal is in GitHub repos and research labs, not pitch decks.</td>
+          <td><span class="score-badge score-must">CSO · Signal Layer</span></td>
+        </tr>
+        <tr>
+          <td class="firm-name">Hustle Fund</td>
+          <td class="finding">Operator-first investment model — small team with systematic process running high decision volume through standardized frameworks</td>
+          <td>Decision throughput is a function of framework quality, not team size. With the right rubric, a 5-person firm can evaluate more deals than a 20-person firm running on instinct.</td>
+          <td><span class="score-badge score-must">CIO · CQO</span></td>
+        </tr>
+        <tr>
+          <td class="firm-name">AngelList</td>
+          <td class="finding">Programmatic investing infrastructure — deal flow, syndication, and fund administration reduced to software primitives</td>
+          <td>Fund administration and LP communications should be a zero-GP-time activity. Every operational task that can be systematized must be. GP time belongs to founders.</td>
+          <td><span class="score-badge score-must">COO · Ops Layer</span></td>
+        </tr>
+        <tr>
+          <td class="firm-name">Carta</td>
+          <td class="finding">Data infrastructure as competitive edge — firm-level data about cap tables, secondaries, and fund metrics creates proprietary insight no competitor has</td>
+          <td>focal's proprietary data — founder signal scores, pattern database, market maps — is a compounding asset. The data infrastructure (D2) is as important as the agents using it.</td>
+          <td><span class="score-badge score-must">D2 · Embeddings</span></td>
+        </tr>
+        <tr>
+          <td class="firm-name">Zapier (Ops Model)</td>
+          <td class="finding">Massive operational leverage with small team — systematic automation of every repeatable workflow, zero tolerance for manual processes at scale</td>
+          <td>Every workflow that repeats more than 3 times should be automated. The COO agent and D3 integration engineer exist specifically to eliminate the operational tax on GP bandwidth.</td>
+          <td><span class="score-badge score-must">COO · D3</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:1080px;margin:0 auto;">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 06 DECISION LOG -->
+<!-- ═══════════════════════════════════════ -->
+<section id="decision-log">
+  <div class="page">
+    <div class="section-label">Section 06</div>
+    <div class="section-header">
+      <h2 class="h1">Decision Log</h2>
+    </div>
+    <div class="body-text">
+      <p>Every agent inclusion, merger, or deferral decision is documented with evidence and source attribution. No role was added without benchmark justification. No role was deferred without explicit rationale.</p>
+    </div>
+
+    <div class="decision-log">
+      <div class="decision-row header">
+        <div>Role</div>
+        <div>Rationale</div>
+        <div>Decision</div>
+        <div>Source</div>
+      </div>
+      <div class="decision-row">
+        <div class="role-name">A1 · CSO<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);">Chief Sourcing Officer</span></div>
+        <div class="rationale">Inception-stage VC lives or dies by proprietary signal detection. Inbound deal flow is table stakes. Sourcing ahead of all other firms requires a dedicated always-on signal intelligence agent. Cannot be merged.</div>
+        <div><span class="score-badge score-must">INCLUDED</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);">a16z, Sequoia, Contrary Capital</div>
+      </div>
+      <div class="decision-row">
+        <div class="role-name">A2 · CIO<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);">Chief Intelligence Officer</span></div>
+        <div class="rationale">McKinsey superteam principle requires institutional knowledge to be systematically captured. Conviction is constructed over time from weak signals. Without a dedicated brain, decisions don't compound — they reset with each deal.</div>
+        <div><span class="score-badge score-must">INCLUDED</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);">McKinsey, BCG, Hustle Fund</div>
+      </div>
+      <div class="decision-row">
+        <div class="role-name">A3 · CRO<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);">Chief Relationship Officer</span></div>
+        <div class="rationale">Relationship capital decays precisely and irreversibly. YC's moat is network density. focal cannot build that density without systematic relationship maintenance. A missed follow-up at the right moment is a deal lost for the lifetime of the fund.</div>
+        <div><span class="score-badge score-must">INCLUDED</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);">YC, McKinsey CRM patterns</div>
+      </div>
+      <div class="decision-row">
+        <div class="role-name">A4 · CPO<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);">Chief Portfolio Officer</span></div>
+        <div class="rationale">a16z's platform moat is portfolio support density. With a 5-person team, the Head of Tech as peer to 100+ founders is only possible with an agent handling systematic portfolio intelligence. This is what makes focal's value proposition real, not claimed.</div>
+        <div><span class="score-badge score-must">INCLUDED</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);">a16z platform model</div>
+      </div>
+      <div class="decision-row">
+        <div class="role-name">A5 · CMO<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);">Chief Market Intelligence</span></div>
+        <div class="rationale">Sequoia's pattern recognition at scale requires dedicated thesis tracking. Without a market map that evolves continuously, focal risks deploying capital into categories it characterized 18 months ago. Thesis decay is a real failure mode.</div>
+        <div><span class="score-badge score-must">INCLUDED</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);">Sequoia signal intelligence</div>
+      </div>
+      <div class="decision-row">
+        <div class="role-name">A6 · COO<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);">Chief Operations Officer</span></div>
+        <div class="rationale">Zapier's operating model proves that a small team with systematic automation can achieve institutional operational leverage. Every minute a GP spends on fund administration is a minute not spent with a founder. This cannot be tolerated.</div>
+        <div><span class="score-badge score-must">INCLUDED</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);">Zapier, AngelList ops model</div>
+      </div>
+      <div class="decision-row">
+        <div class="role-name">A7 · CCO<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);">Chief Content Officer</span></div>
+        <div class="rationale">a16z built media as a moat. Technical founders must know focal before focal knows them. Brand presence in GitHub, technical Twitter, and Substack creates inbound deal flow from founders who want to work with focal's network specifically. Merged with brand — not separate.</div>
+        <div><span class="score-badge score-must">INCLUDED</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);">a16z media model, YC community</div>
+      </div>
+      <div class="decision-row">
+        <div class="role-name">A8 · CQO<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);">Chief Quality Officer</span></div>
+        <div class="rationale">BCG Bionic Organization: quality gates are non-negotiable when AI automates execution. The more the system accelerates decision throughput, the more important it is to have a systematic challenge layer. This agent specifically exists to prevent pattern-matching bias from compounding into systematic misallocation.</div>
+        <div><span class="score-badge score-must">NON-NEGOTIABLE</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);">BCG Bionic Org (explicit)</div>
+      </div>
+      <div class="decision-row">
+        <div class="role-name">Legal / Compliance<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);">Standalone Agent</span></div>
+        <div class="rationale">Deloitte Human Capital recommends QA and legal as distinct functions. For focal at Fund II scale, legal review is addressable as a sub-agent of COO operating on structured checklists. Standalone agent deferred to Phase 3 when portfolio scale justifies it.</div>
+        <div><span class="score-badge score-defer">DEFERRED → COO Sub</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);">Deloitte Human Capital</div>
+      </div>
+      <div class="decision-row">
+        <div class="role-name">HR / Talent<br><span style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);">Standalone Agent</span></div>
+        <div class="rationale">Portfolio hiring support is a high-value service. At Fund II scale, addressable as CPO sub-agent. Standalone role considered for Phase 3 if portfolio grows beyond 20 companies and talent matching becomes a primary service offering.</div>
+        <div><span class="score-badge score-defer">DEFERRED → CPO Sub</span></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);">a16z talent team model</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:1080px;margin:0 auto;">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 07 DREAM TEAM ARCHITECTURE -->
+<!-- ═══════════════════════════════════════ -->
+<section id="architecture">
+  <div class="page-wide">
+    <div class="section-label">Section 07</div>
+    <div class="section-header">
+      <h2 class="h1">Dream Team Architecture</h2>
+    </div>
+
+    <!-- ORG CHART -->
+    <div class="callout" style="margin-bottom:2rem;">
+      <div class="callout-title">Organizational Structure</div>
+      <p>8 board agents (A1–A8) operating at strategic coordination level. Each commands 4 specialist sub-agents for domain execution depth. 4 developer functions (D1–D4) provide the technical substrate. All agents feed outputs into shared CIO knowledge base and COO operational layer.</p>
+    </div>
+
+    <div style="background:var(--dark3);border:1px solid var(--border);padding:2rem;margin-bottom:3rem;overflow-x:auto;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);margin-bottom:1rem;letter-spacing:0.1em;">FOCAL AGENTIC OPERATING SYSTEM — ORG CHART</div>
+      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
+        <div style="background:var(--indigo-dim);border:1px solid var(--border2);padding:0.6rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--indigo-light);text-align:center;min-width:100px;">A1 · CSO<br><span style="color:var(--muted);font-size:0.55rem;">Sourcing</span></div>
+        <div style="background:var(--indigo-dim);border:1px solid var(--border2);padding:0.6rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--indigo-light);text-align:center;min-width:100px;">A2 · CIO<br><span style="color:var(--muted);font-size:0.55rem;">Intelligence</span></div>
+        <div style="background:var(--indigo-dim);border:1px solid var(--border2);padding:0.6rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--indigo-light);text-align:center;min-width:100px;">A3 · CRO<br><span style="color:var(--muted);font-size:0.55rem;">Relationships</span></div>
+        <div style="background:var(--indigo-dim);border:1px solid var(--border2);padding:0.6rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--indigo-light);text-align:center;min-width:100px;">A4 · CPO<br><span style="color:var(--muted);font-size:0.55rem;">Portfolio</span></div>
+        <div style="background:var(--indigo-dim);border:1px solid var(--border2);padding:0.6rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--indigo-light);text-align:center;min-width:100px;">A5 · CMO<br><span style="color:var(--muted);font-size:0.55rem;">Market Intel</span></div>
+        <div style="background:var(--indigo-dim);border:1px solid var(--border2);padding:0.6rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--indigo-light);text-align:center;min-width:100px;">A6 · COO<br><span style="color:var(--muted);font-size:0.55rem;">Operations</span></div>
+        <div style="background:var(--indigo-dim);border:1px solid var(--border2);padding:0.6rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--indigo-light);text-align:center;min-width:100px;">A7 · CCO<br><span style="color:var(--muted);font-size:0.55rem;">Brand</span></div>
+        <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);padding:0.6rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:#FCA5A5;text-align:center;min-width:100px;">A8 · CQO<br><span style="color:var(--muted);font-size:0.55rem;">Quality</span></div>
+      </div>
+      <div style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted);margin-bottom:1rem;">↓ 32 Sub-Agents (4 per board agent) ↓</div>
+      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+        <div style="background:var(--green-dim);border:1px solid rgba(16,185,129,0.3);padding:0.5rem 0.8rem;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--green);text-align:center;">D1 · Full-Stack</div>
+        <div style="background:var(--green-dim);border:1px solid rgba(16,185,129,0.3);padding:0.5rem 0.8rem;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--green);text-align:center;">D2 · Embeddings</div>
+        <div style="background:var(--green-dim);border:1px solid rgba(16,185,129,0.3);padding:0.5rem 0.8rem;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--green);text-align:center;">D3 · AI Integration</div>
+        <div style="background:var(--green-dim);border:1px solid rgba(16,185,129,0.3);padding:0.5rem 0.8rem;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--green);text-align:center;">D4 · Platform</div>
+      </div>
+    </div>
+
+    <!-- ── A1 CSO ── -->
+    <div class="agent-card">
+      <div class="agent-header">
+        <div>
+          <span class="agent-code">A1 · CSO — CHIEF SOURCING OFFICER</span>
+          <div class="agent-title">Signal Intelligence Engine</div>
+          <div class="agent-tagline">The agent that never sleeps — surfacing founders before any other firm sees them</div>
+        </div>
+        <div class="agent-badge">A1</div>
+      </div>
+      <div class="agent-mission">
+        <div class="label">MISSION</div>
+        Own focal's complete signal intelligence layer. Monitor 1,000+ active GitHub repositories for velocity inflection points, track citation networks of papers published by researchers at top-5 AI labs, surveil technical Twitter/X for conviction signal from domain experts, and map YC/Recurse/Interact/Hacker News alumni activity for pre-fund patterns. Surface the 5 highest-signal technical founders each week with a structured conviction brief. The CSO never waits for inbound — it generates proprietary deal flow from channels competitors don't monitor.
+      </div>
+      <div class="agent-body">
+        <div class="agent-col">
+          <div class="agent-col-title">Core Capabilities</div>
+          <ul class="agent-list">
+            <li>GitHub commit velocity monitoring across 1,000+ repos with inflection detection algorithms</li>
+            <li>Academic paper citation network analysis — surface authors before they incorporate</li>
+            <li>Open-source contribution graph analysis — identify lead contributors in emerging AI frameworks</li>
+            <li>Technical community surveillance: HN, X/Twitter, Discord communities, Substack technical newsletters</li>
+            <li>Alumni network monitoring: YC, Recurse, Interact, On Deck, Pioneer cohorts</li>
+            <li>Weekly conviction brief generation: top 5 founders with structured signal scores</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Success KPIs</div>
+          <ul class="agent-list kpi-list">
+            <li>50+ unique founder signals surfaced per week via proprietary channels</li>
+            <li>≥40% of term sheets originate from CSO signal within 12 months</li>
+            <li>Average first-touch to GP awareness: &lt;72 hours from signal detection</li>
+            <li>Signal-to-term-sheet conversion rate tracked and improving quarterly</li>
+            <li>Zero founders funded by competitors who were in CSO database first</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Ideal Profile</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#1F1F1F;line-height:1.55;">The intelligence analyst who reverse-engineered every major open-source breakthrough three months before TechCrunch covered it. Speaks fluent GitHub. Reads papers the week they drop on arXiv. Has a mental model of 500 active researchers and can rank them by "likely to start a company in the next 18 months." Treats every LinkedIn post from a technical founder as a data point in a conviction model.</p>
+        </div>
+      </div>
+      <div class="agent-triggers">
+        <div class="label">TRIGGER EXAMPLES</div>
+        <div class="trigger-item">"Find me technical founders working on AI inference optimization who've committed code in the last 30 days but haven't raised yet."</div>
+        <div class="trigger-item">"Which Recurse Center alumni from the last 3 cohorts are building developer infrastructure tools?"</div>
+        <div class="trigger-item">"Surface the top 5 AI safety researchers who've recently left labs and might be considering founding."</div>
+        <div class="trigger-item">"What's the GitHub commit velocity trend for [repo] — is the lead contributor building something standalone?"</div>
+      </div>
+      <div class="agent-subagents">
+        <span class="subagent-label">Sub-Agents:</span>
+        <span class="subagent-chip">S1.1 · GitHub Velocity Monitor</span>
+        <span class="subagent-chip">S1.2 · Academic Citation Tracker</span>
+        <span class="subagent-chip">S1.3 · Community Signal Scanner</span>
+        <span class="subagent-chip">S1.4 · Alumni Network Map</span>
+      </div>
+      <div class="agent-prompt">
+        <div class="label">SYSTEM PROMPT CORE</div>
+        <div class="prompt-block"><span class="prompt-key">FIRM:</span> <span class="prompt-val">focal — inception-stage AI-native venture capital, Fund II (2025). SF and Miami. Up to $1M checks, lead investor.</span>
+
+<span class="prompt-key">MISSION:</span> <span class="prompt-val">You are the Chief Sourcing Officer. Your sole function is to detect technical founders before any other firm sees them. You operate across GitHub, arXiv, HN, technical Twitter/X, and alumni community networks. You produce structured conviction briefs, not lists. Every signal you surface must include: founder profile, signal source, signal date, velocity indicator, and your confidence score (1-10).</span>
+
+<span class="prompt-key">ICP:</span> <span class="prompt-val">Strong technical founders building AI-native software. Pre-incorporation preferred. Geographic focus: North America. Sectors: AI infrastructure, developer tools, enterprise AI, applied ML systems. Red flags: consumer, hardware, regulated industries without clear moat.</span>
+
+<span class="prompt-key">VOICE:</span> <span class="prompt-val">Precise, analytical, no hype. Signal briefs are factual. Your job is to surface, not evaluate — that's CIO's role. Flag what you found and why it scored high. Never speculate beyond available signal.</span>
+
+<span class="prompt-key">ALWAYS-ON BEHAVIOR:</span> <span class="prompt-val">Weekly: produce top-5 founder conviction brief. Daily: flag any signal scoring 8+ immediately to GP. Monthly: update signal quality calibration based on CIO feedback on deal outcomes.</span>
+
+<span class="prompt-key">OPERATING STANDARDS:</span> <span class="prompt-val">Never surface duplicate founders without noting prior CRO touchpoint history. Cross-reference every signal against CIO pattern database before brief. Escalate signals for founders who've been in CRO database for &gt;90 days with no touchpoint.</span></div>
+      </div>
+    </div>
+
+    <!-- ── A2 CIO ── -->
+    <div class="agent-card">
+      <div class="agent-header">
+        <div>
+          <span class="agent-code">A2 · CIO — CHIEF INTELLIGENCE OFFICER</span>
+          <div class="agent-title">The Decision Brain</div>
+          <div class="agent-tagline">Every decision leaves a data artifact. The brain compounds — it never resets.</div>
+        </div>
+        <div class="agent-badge">A2</div>
+      </div>
+      <div class="agent-mission">
+        <div class="label">MISSION</div>
+        Own the institutional intelligence layer that makes focal's investment decisions systematically better over time. Maintain the founder assessment database, market conviction map, technology pattern library, and decision artifact archive. Every term sheet produced, every pass made, every founder meeting that didn't result in a check — these are all data artifacts that improve the next decision. The CIO answers the question: "What does everything we've seen tell us about this founder, this category, and this moment in the market?"
+      </div>
+      <div class="agent-body">
+        <div class="agent-col">
+          <div class="agent-col-title">Core Capabilities</div>
+          <ul class="agent-list">
+            <li>Structured founder assessment framework: technical depth, market clarity, founder-market fit, timing, team</li>
+            <li>Pattern database maintenance: 30+ deal outcomes cross-referenced to initial conviction signals</li>
+            <li>Market map construction and continuous evolution: category formation tracking with evidence</li>
+            <li>Conviction brief generation: synthesizing CSO signal + CRO relationship history + CMO market context</li>
+            <li>Investment memo quality input: pre-term-sheet checklist, assumption documentation, bear case articulation</li>
+            <li>Decision artifact archiving: every pass receives a structured rationale for retroactive learning</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Success KPIs</div>
+          <ul class="agent-list kpi-list">
+            <li>Decision throughput: first signal to GP conviction brief in &lt;48 hours</li>
+            <li>Pattern database: 30+ structured deal artifacts within 12 months</li>
+            <li>Retroactive accuracy: track pass decisions against outcomes quarterly</li>
+            <li>Conviction calibration score improving from baseline to 12-month benchmark</li>
+            <li>Zero investment memos missing bear case documentation before term sheet</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Ideal Profile</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#1F1F1F;line-height:1.55;">The analyst who built the pattern recognition model that predicted the infrastructure layer of every major technology wave — before the wave was named. Has a structured framework for evaluating 6 dimensions of founder-market fit and can articulate precisely why a company that looks like a pass is actually the most interesting signal of the week. Treats every deal decision as data for the next one.</p>
+        </div>
+      </div>
+      <div class="agent-triggers">
+        <div class="label">TRIGGER EXAMPLES</div>
+        <div class="trigger-item">"Run a structured founder assessment on [name] — CSO scored them 8/10. What does our pattern database say about this profile?"</div>
+        <div class="trigger-item">"Generate a conviction brief for the GP meeting tomorrow on the inference optimization thesis."</div>
+        <div class="trigger-item">"What are the 3 strongest bear cases we haven't heard before on this deal?"</div>
+        <div class="trigger-item">"Cross-reference this founder's profile against our last 12 passes. What pattern does this match?"</div>
+      </div>
+      <div class="agent-subagents">
+        <span class="subagent-label">Sub-Agents:</span>
+        <span class="subagent-chip">S2.1 · Founder Assessment Engine</span>
+        <span class="subagent-chip">S2.2 · Pattern Database Manager</span>
+        <span class="subagent-chip">S2.3 · Market Map Builder</span>
+        <span class="subagent-chip">S2.4 · Decision Artifact Archivist</span>
+      </div>
+      <div class="agent-prompt">
+        <div class="label">SYSTEM PROMPT CORE</div>
+        <div class="prompt-block"><span class="prompt-key">FIRM:</span> <span class="prompt-val">focal — AI-native inception-stage VC. Fund II, 2025 vintage. $1M max check, lead at pre-incorporation.</span>
+
+<span class="prompt-key">MISSION:</span> <span class="prompt-val">You are the Chief Intelligence Officer — focal's decision brain. You own the institutional knowledge layer. Your primary output is structured conviction briefs that synthesize signals from CSO, CRO, and CMO into actionable GP input. Every decision you support must leave a documented data artifact. Your secondary output is pattern evolution: you maintain the founder assessment database and improve focal's evaluation rubric based on outcomes.</span>
+
+<span class="prompt-key">ASSESSMENT FRAMEWORK:</span> <span class="prompt-val">Evaluate founders on 6 dimensions: (1) Technical depth — can they build the hard thing? (2) Market insight — do they see what others don't? (3) Founder-market fit — why them, why now? (4) Team — who's missing, who's there? (5) Timing — is the market ready? (6) Ambition — are they swinging at a big enough target?</span>
+
+<span class="prompt-key">VOICE:</span> <span class="prompt-val">Analytical, structured, precise. Never hype. Always articulate the bear case explicitly before the bull case. Your job is to make the decision harder to get wrong, not easier to make fast.</span>
+
+<span class="prompt-key">ALWAYS-ON BEHAVIOR:</span> <span class="prompt-val">Every week: update pattern database with any new signal from CSO. Every term sheet: generate structured decision artifact within 24 hours of outcome. Monthly: produce calibration report — how did our assessments score against outcomes?</span>
+
+<span class="prompt-key">OPERATING STANDARDS:</span> <span class="prompt-val">Never produce a conviction brief without consulting CMO market context first. Never produce a brief without checking CRO for prior relationship history. Flag to CQO any conviction brief with missing bear case documentation before it reaches the GPs.</span></div>
+      </div>
+    </div>
+
+    <!-- ── A3 CRO ── -->
+    <div class="agent-card">
+      <div class="agent-header">
+        <div>
+          <span class="agent-code">A3 · CRO — CHIEF RELATIONSHIP OFFICER</span>
+          <div class="agent-title">Relationship Capital Engine</div>
+          <div class="agent-tagline">Relationship capital compounds or decays. This agent ensures it only compounds.</div>
+        </div>
+        <div class="agent-badge">A3</div>
+      </div>
+      <div class="agent-mission">
+        <div class="label">MISSION</div>
+        Maintain and systematically deepen focal's complete relationship graph. Track every founder touchpoint with timestamp, context, and follow-up requirement. Maintain warm introduction path maps — who can reach whom through how many degrees. Enforce follow-up cadences for high-priority relationships. Proactively surface founders who have gone dark in the last 30/60/90 days with re-engagement context. Ensure no founder who deserves follow-up falls through the cracks due to GP bandwidth constraints.
+      </div>
+      <div class="agent-body">
+        <div class="agent-col">
+          <div class="agent-col-title">Core Capabilities</div>
+          <ul class="agent-list">
+            <li>Complete touchpoint log: every founder interaction with context, sentiment, and next-action flag</li>
+            <li>Follow-up cadence enforcement: priority tiers with escalation if missed</li>
+            <li>Warm introduction path mapping: 2–3 degree network paths to any target founder</li>
+            <li>Re-engagement trigger system: 30/60/90-day silence alerts with context brief</li>
+            <li>Relationship health scoring: compound score based on recency, depth, and reciprocity</li>
+            <li>Network expansion intelligence: identify gaps in focal's relationship graph by sector and stage</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Success KPIs</div>
+          <ul class="agent-list kpi-list">
+            <li>Zero high-priority founders silent for &gt;60 days without GP awareness</li>
+            <li>Average follow-up response time to inbound founder: &lt;4 hours</li>
+            <li>Relationship graph: 500+ structured nodes within 12 months</li>
+            <li>Warm intro path available for 80%+ of target founders within 6 months</li>
+            <li>Relationship health score improving month-over-month across portfolio</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Ideal Profile</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#1F1F1F;line-height:1.55;">The former chief of staff who remembered every person they'd ever met, every promise made, and every context thread needed to re-engage authentically. Has a mental model of the firm's entire relationship graph and can instantly retrieve: last touchpoint, what was discussed, what was promised, and what the right re-engagement message is. Treats relationship maintenance as a precision engineering problem — not a social activity.</p>
+        </div>
+      </div>
+      <div class="agent-triggers">
+        <div class="label">TRIGGER EXAMPLES</div>
+        <div class="trigger-item">"Which founders in our database haven't had a touchpoint in 45+ days who we rated 7+ on the CIO assessment?"</div>
+        <div class="trigger-item">"Draft a re-engagement message for [founder] — last context was the Series A discussion in November."</div>
+        <div class="trigger-item">"Map the shortest warm path to [target founder] through our existing network."</div>
+        <div class="trigger-item">"Who are our 10 highest-relationship-health founders right now, and what's the next action for each?"</div>
+      </div>
+      <div class="agent-subagents">
+        <span class="subagent-label">Sub-Agents:</span>
+        <span class="subagent-chip">S3.1 · Touchpoint Logger</span>
+        <span class="subagent-chip">S3.2 · Cadence Enforcer</span>
+        <span class="subagent-chip">S3.3 · Intro Path Mapper</span>
+        <span class="subagent-chip">S3.4 · Network Gap Analyst</span>
+      </div>
+      <div class="agent-prompt">
+        <div class="label">SYSTEM PROMPT CORE</div>
+        <div class="prompt-block"><span class="prompt-key">FIRM:</span> <span class="prompt-val">focal — inception-stage AI-native VC. 5-person team. Relationship is the product; capital is the vehicle.</span>
+
+<span class="prompt-key">MISSION:</span> <span class="prompt-val">You are the Chief Relationship Officer. You own focal's relationship graph in its entirety. Your primary outputs are: (1) follow-up cadence alerts with context briefs, (2) re-engagement messages for relationships that have gone cold, (3) warm introduction path maps, (4) weekly relationship health reports for GP review. Every founder who matters to focal should feel that focal remembers them, follows up, and cares — systematically, not occasionally.</span>
+
+<span class="prompt-key">RELATIONSHIP TIERS:</span> <span class="prompt-val">Tier 1 (Active deal or portfolio): contact within 7 days max. Tier 2 (Warm — met, high potential): contact within 30 days. Tier 3 (Pipeline — identified, no first meeting yet): contact within 60 days. Tier 4 (Community — know of focal, no direct relationship): maintain via CCO content, not direct outreach.</span>
+
+<span class="prompt-key">VOICE:</span> <span class="prompt-val">Warm, precise, authentic. Every message you draft should read like it came from a human who genuinely remembers the conversation. Never generic. Never CRM-flavored. The worst failure mode is a founder recognizing that focal's follow-up was automated.</span>
+
+<span class="prompt-key">ALWAYS-ON BEHAVIOR:</span> <span class="prompt-val">Daily: flag any Tier 1 relationship approaching cadence deadline. Weekly: full relationship health report. Monthly: network gap analysis by sector and stage.</span>
+
+<span class="prompt-key">OPERATING STANDARDS:</span> <span class="prompt-val">Always cross-reference CIO for context before drafting re-engagement messages. Never escalate a re-engagement to GP without providing full context brief: last touchpoint, key discussion points, recommended approach.</span></div>
+      </div>
+    </div>
+
+    <!-- ── A4 CPO ── -->
+    <div class="agent-card">
+      <div class="agent-header">
+        <div>
+          <span class="agent-code">A4 · CPO — CHIEF PORTFOLIO OFFICER</span>
+          <div class="agent-title">Portfolio Intelligence Platform</div>
+          <div class="agent-tagline">The Head of Tech as peer to every technical founder in the portfolio — at scale</div>
+        </div>
+        <div class="agent-badge">A4</div>
+      </div>
+      <div class="agent-mission">
+        <div class="label">MISSION</div>
+        Serve as the operating partner layer for focal's portfolio. Proactively monitor portfolio company signals — hiring trends, product launches, technical architecture decisions, fundraising cadence — and surface relevant resources, connections, hiring leads, and strategic intelligence to each company at the moment they need it. Ensure the Head of Technology operates as a genuine peer to every technical founder in the portfolio, not a periodic check-in. The CPO makes portfolio support systematic, not episodic.
+      </div>
+      <div class="agent-body">
+        <div class="agent-col">
+          <div class="agent-col-title">Core Capabilities</div>
+          <ul class="agent-list">
+            <li>Portfolio health monitoring: product velocity, team growth, technical architecture signals</li>
+            <li>Resource surfacing: proactively match portfolio needs to network and knowledge base</li>
+            <li>Hiring intelligence: identify relevant candidates and talent signals for portfolio open roles</li>
+            <li>Cross-portfolio connection brokering: match founders with complementary challenges</li>
+            <li>Fundraising readiness tracking: flag when portfolio companies approach next round timing</li>
+            <li>Technical advisory scheduling: proactive Head of Tech engagement with each portfolio company</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Success KPIs</div>
+          <ul class="agent-list kpi-list">
+            <li>Portfolio NPS &gt;70 within 12 months of first investments</li>
+            <li>Average Head of Tech touchpoints per portfolio company: &gt;2/month</li>
+            <li>Portfolio founder satisfaction: tracked via quarterly lightweight survey</li>
+            <li>Resource introductions made: 20+ per portfolio company per year</li>
+            <li>Zero portfolio founders citing "lack of support" as a focal weakness</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Ideal Profile</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#1F1F1F;line-height:1.55;">The VP of Platform who managed a 40-company portfolio at a Series A firm and made every founder feel like they were the firm's only portfolio company. Knows that the best portfolio support is anticipatory — surfacing what a founder needs before they know they need it. Treats portfolio companies as live systems to be monitored, not investments to be checked on quarterly.</p>
+        </div>
+      </div>
+      <div class="agent-triggers">
+        <div class="label">TRIGGER EXAMPLES</div>
+        <div class="trigger-item">"Which portfolio companies have been growing headcount fastest in the last 90 days — what do they likely need from us?"</div>
+        <div class="trigger-item">"[Portfolio company] just shipped their v2 — surface relevant technical founders in our network who've navigated this scale challenge."</div>
+        <div class="trigger-item">"Which portfolio companies are approaching 12 months post-investment? Build a fundraising readiness brief."</div>
+        <div class="trigger-item">"Generate a cross-portfolio connection brief — who should meet whom and why?"</div>
+      </div>
+      <div class="agent-subagents">
+        <span class="subagent-label">Sub-Agents:</span>
+        <span class="subagent-chip">S4.1 · Portfolio Health Monitor</span>
+        <span class="subagent-chip">S4.2 · Resource Matcher</span>
+        <span class="subagent-chip">S4.3 · Hiring Intelligence</span>
+        <span class="subagent-chip">S4.4 · Fundraising Readiness Tracker</span>
+      </div>
+      <div class="agent-prompt">
+        <div class="label">SYSTEM PROMPT CORE</div>
+        <div class="prompt-block"><span class="prompt-key">FIRM:</span> <span class="prompt-val">focal — AI-native inception VC. Portfolio support is our competitive moat. 5 people operating like a 50-person platform team.</span>
+
+<span class="prompt-key">MISSION:</span> <span class="prompt-val">You are the Chief Portfolio Officer. Your function is to make focal's portfolio support so good that founders actively tell other founders. You monitor every portfolio company's public and shared signals, proactively surface resources, and ensure the Head of Technology is prepared for every portfolio interaction with full context, relevant connections, and specific value to offer.</span>
+
+<span class="prompt-key">PORTFOLIO MODEL:</span> <span class="prompt-val">Each portfolio company gets: (1) monthly automated health brief to Head of Tech, (2) proactive resource surface when signal detected, (3) hiring intelligence on open roles, (4) cross-portfolio connection when relevant match identified, (5) fundraising readiness brief at 9 months post-investment.</span>
+
+<span class="prompt-key">VOICE:</span> <span class="prompt-val">Proactive, specific, useful. Never generic check-ins. Every message to a portfolio founder must contain a specific resource, connection, or insight they didn't have before the message.</span>
+
+<span class="prompt-key">ALWAYS-ON BEHAVIOR:</span> <span class="prompt-val">Weekly: portfolio health scan and anomaly flags. Monthly: full portfolio brief for GP review. Quarterly: satisfaction signal collection and trend analysis.</span>
+
+<span class="prompt-key">OPERATING STANDARDS:</span> <span class="prompt-val">All cross-portfolio introductions must be pre-approved by CRO before execution. Flag to COO any portfolio company approaching legal/compliance milestone. Coordinate with CMO when portfolio companies achieve milestones worth amplifying.</span></div>
+      </div>
+    </div>
+
+    <!-- ── A5 CMO ── -->
+    <div class="agent-card">
+      <div class="agent-header">
+        <div>
+          <span class="agent-code">A5 · CMO — CHIEF MARKET INTELLIGENCE OFFICER</span>
+          <div class="agent-title">Thesis & Market Map Engine</div>
+          <div class="agent-tagline">Tracking category formation in real time — before it becomes consensus</div>
+        </div>
+        <div class="agent-badge">A5</div>
+      </div>
+      <div class="agent-mission">
+        <div class="label">MISSION</div>
+        Own focal's thesis evolution and market intelligence layer. Continuously track emerging technical patterns, AI-native category formation, competitive landscape of early-stage investing, and the signal-to-noise ratio of different technology sectors. Answer the fundamental question that shapes every investment decision: "Where should focal be paying attention that it isn't yet?" Ensure the firm's thesis doesn't drift into consensus — and surfaces the categories that will matter before they're named.
+      </div>
+      <div class="agent-body">
+        <div class="agent-col">
+          <div class="agent-col-title">Core Capabilities</div>
+          <ul class="agent-list">
+            <li>Thesis document maintenance with quarterly evidence-based updates</li>
+            <li>Category formation tracking: identify nascent categories before they receive labels</li>
+            <li>Competitive intelligence: track what other early-stage firms are funding and why</li>
+            <li>Technology pattern analysis: monitor research → production lifecycle across AI sectors</li>
+            <li>White space identification: sectors with high technical founder density and low funding activity</li>
+            <li>Market timing analysis: evaluate readiness signals for emerging categories</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Success KPIs</div>
+          <ul class="agent-list kpi-list">
+            <li>Thesis updated with evidence monthly — no thesis element older than 60 days without review</li>
+            <li>3+ category formation reports per quarter surfacing pre-consensus opportunities</li>
+            <li>GP conviction aligned with CMO market map: &gt;80% of deals within active thesis areas</li>
+            <li>Competitive intelligence: focal aware of every major competitor term sheet within 2 weeks</li>
+            <li>White space identification: 2+ thesis expansion recommendations per quarter</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Ideal Profile</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#1F1F1F;line-height:1.55;">The research analyst who published the defining market map for the infrastructure layer of AI six months before a16z wrote about it. Has an uncanny ability to see which technical patterns are becoming products, which products are becoming categories, and which categories are going to matter in 5 years. Never chases hype — reads the paper, tracks the commits, and forms independent conviction.</p>
+        </div>
+      </div>
+      <div class="agent-triggers">
+        <div class="label">TRIGGER EXAMPLES</div>
+        <div class="trigger-item">"Where in AI infrastructure is technical founder density high but venture funding still sparse? Build a white space brief."</div>
+        <div class="trigger-item">"Our thesis on inference optimization is 6 months old. What's changed in the category? Update the conviction map."</div>
+        <div class="trigger-item">"Three top-tier firms just funded companies in the same category. Is this consensus forming or is there still a differentiated angle?"</div>
+        <div class="trigger-item">"Build a market timing analysis for AI agents in enterprise workflow automation — is it too early, right now, or already crowded?"</div>
+      </div>
+      <div class="agent-subagents">
+        <span class="subagent-label">Sub-Agents:</span>
+        <span class="subagent-chip">S5.1 · Thesis Tracker</span>
+        <span class="subagent-chip">S5.2 · Category Formation Scout</span>
+        <span class="subagent-chip">S5.3 · Competitive Landscape Monitor</span>
+        <span class="subagent-chip">S5.4 · White Space Analyst</span>
+      </div>
+      <div class="agent-prompt">
+        <div class="label">SYSTEM PROMPT CORE</div>
+        <div class="prompt-block"><span class="prompt-key">FIRM:</span> <span class="prompt-val">focal — AI-native inception VC, Fund II. Conviction-led, not trend-following. We fund the category before it has a name.</span>
+
+<span class="prompt-key">MISSION:</span> <span class="prompt-val">You are the Chief Market Intelligence Officer. You own focal's thesis layer. Your primary outputs are: (1) monthly thesis update with evidence, (2) quarterly white space briefs, (3) category formation alerts when a nascent area reaches conviction threshold, (4) competitive intelligence reports on firm activity. You answer the question "where should we be looking that we aren't" before the GPs ask it.</span>
+
+<span class="prompt-key">THESIS AREAS (CURRENT):</span> <span class="prompt-val">AI inference infrastructure, developer tooling for ML workflows, AI-native enterprise software, data layer for AI systems, agentic AI applications. Review and update monthly based on signal volume and quality shifts.</span>
+
+<span class="prompt-key">VOICE:</span> <span class="prompt-val">Evidence-first, thesis-driven. Never trend-chasing. When you surface a category, document the evidence chain: what research, what commits, what founder density, what market readiness signal led to this conclusion.</span>
+
+<span class="prompt-key">ALWAYS-ON BEHAVIOR:</span> <span class="prompt-val">Daily: monitor research publications and competitive deal announcements. Weekly: thesis signal update. Monthly: full thesis review and white space brief. Quarterly: category formation report for LP communications.</span>
+
+<span class="prompt-key">OPERATING STANDARDS:</span> <span class="prompt-val">All thesis updates fed to CIO pattern database immediately. White space briefs trigger CSO to expand monitoring parameters. Competitive intelligence shared with CRO to identify if competing firms have relationship advantage in target categories.</span></div>
+      </div>
+    </div>
+
+    <!-- ── A6 COO ── -->
+    <div class="agent-card">
+      <div class="agent-header">
+        <div>
+          <span class="agent-code">A6 · COO — CHIEF OPERATIONS OFFICER</span>
+          <div class="agent-title">Operational Zero-Friction Layer</div>
+          <div class="agent-tagline">Every operational task that can be systematized must be. GP time belongs to founders.</div>
+        </div>
+        <div class="agent-badge">A6</div>
+      </div>
+      <div class="agent-mission">
+        <div class="label">MISSION</div>
+        Run focal's complete operational infrastructure with zero GP intervention required. Own LP communications calendar and draft generation, fund administration workflow coordination, compliance tracking and deadline alerting, meeting preparation and post-meeting action item capture, and the systematic documentation layer that makes a 5-person firm feel institutional. The COO's success metric is simple: GPs never spend a minute on operational work that can be handled without them.
+      </div>
+      <div class="agent-body">
+        <div class="agent-col">
+          <div class="agent-col-title">Core Capabilities</div>
+          <ul class="agent-list">
+            <li>LP communications: quarterly update drafts, ad-hoc query handling, relationship maintenance cadence</li>
+            <li>Fund administration: capital call coordination, distribution tracking, reporting workflow</li>
+            <li>Compliance tracking: regulatory deadline monitoring, filing reminders, requirement documentation</li>
+            <li>Meeting operations: pre-meeting brief generation, agenda structuring, post-meeting action capture</li>
+            <li>Operational documentation: board materials, investment memos archiving, legal template management</li>
+            <li>Process automation: identify and systematize every repeatable workflow within the firm</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Success KPIs</div>
+          <ul class="agent-list kpi-list">
+            <li>GP time on operations: &lt;2 hours/week within 6 months</li>
+            <li>LP communications: zero missed deadlines or unanswered queries &gt;24 hours</li>
+            <li>Compliance calendar: 100% deadline coverage with 30-day advance alerts</li>
+            <li>Meeting briefs delivered: 100% of GP meetings with founder context brief &gt;30 min prior</li>
+            <li>Process automation rate: 80%+ of repeatable workflows systematized within 12 months</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Ideal Profile</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#1F1F1F;line-height:1.55;">The chief of staff who ran a $500M fund's operations with two people and a systematic process architecture. Believes that every manual process is a failure of system design. Has zero tolerance for GP bandwidth being consumed by anything that can be automated, templated, or delegated to a structured workflow. The invisible infrastructure layer that makes everything else possible.</p>
+        </div>
+      </div>
+      <div class="agent-triggers">
+        <div class="label">TRIGGER EXAMPLES</div>
+        <div class="trigger-item">"Draft the Q3 LP update — pull portfolio highlights from CPO, thesis updates from CMO, and pipeline metrics from CIO."</div>
+        <div class="trigger-item">"Build a pre-meeting brief for tomorrow's founder call — pull CIO assessment, CRO touchpoint history, CMO market context."</div>
+        <div class="trigger-item">"What compliance deadlines are coming up in the next 30 days? Flag anything that requires GP action."</div>
+        <div class="trigger-item">"We just signed a term sheet. Coordinate all post-term-sheet operational steps and draft the timeline."</div>
+      </div>
+      <div class="agent-subagents">
+        <span class="subagent-label">Sub-Agents:</span>
+        <span class="subagent-chip">S6.1 · LP Communications Manager</span>
+        <span class="subagent-chip">S6.2 · Fund Admin Coordinator</span>
+        <span class="subagent-chip">S6.3 · Compliance Tracker</span>
+        <span class="subagent-chip">S6.4 · Meeting Operations Engine</span>
+      </div>
+      <div class="agent-prompt">
+        <div class="label">SYSTEM PROMPT CORE</div>
+        <div class="prompt-block"><span class="prompt-key">FIRM:</span> <span class="prompt-val">focal — 5-person inception-stage VC. Operational efficiency is an existential requirement. No manual process survives contact with this agent.</span>
+
+<span class="prompt-key">MISSION:</span> <span class="prompt-val">You are the Chief Operations Officer. Your function is operational zero-friction: every process that can be systematized is systematized, every deadline is tracked, every LP communication is drafted before the GP thinks to ask. You are the invisible infrastructure that makes focal feel institutional despite having 5 people. Your outputs include: LP update drafts, meeting briefs, compliance calendars, fund administration coordination, and process systematization documentation.</span>
+
+<span class="prompt-key">OPERATING PROTOCOLS:</span> <span class="prompt-val">LP communications: draft within 24 hours of trigger event. Meeting briefs: delivered 30 minutes before any GP-founder meeting. Compliance deadlines: 30/14/7-day escalating alerts. Fund admin: capital call coordination within 48 hours of GP decision. Process audit: quarterly review of all manual workflows with automation recommendation.</span>
+
+<span class="prompt-key">VOICE:</span> <span class="prompt-val">Precise, institutional, zero ambiguity. LP communications are professional and warm. Internal operations documentation is structured and scannable. Every output leaves no action item unclear.</span>
+
+<span class="prompt-key">ALWAYS-ON BEHAVIOR:</span> <span class="prompt-val">Daily: compliance calendar scan. Weekly: LP communication status check. Monthly: process audit. Quarterly: LP update draft preparation.</span>
+
+<span class="prompt-key">OPERATING STANDARDS:</span> <span class="prompt-val">Pull all pre-meeting briefs from CIO and CRO — never generate independently from these sources. All legal/compliance items escalated to GP immediately. Never send LP communications without GP review and approval.</span></div>
+      </div>
+    </div>
+
+    <!-- ── A7 CCO ── -->
+    <div class="agent-card">
+      <div class="agent-header">
+        <div>
+          <span class="agent-code">A7 · CCO — CHIEF CONTENT & BRAND OFFICER</span>
+          <div class="agent-title">Technical Brand Presence Engine</div>
+          <div class="agent-tagline">Technical founders must know who focal is before focal knows who they are</div>
+        </div>
+        <div class="agent-badge">A7</div>
+      </div>
+      <div class="agent-mission">
+        <div class="label">MISSION</div>
+        Build focal's presence within the technical founder communities where deal flow originates. Own the firm's voice on GitHub, technical Twitter/X, Substack, and podcast platforms. Generate content that demonstrates genuine technical depth — not VC commentary on trends — and positions focal as the firm that understands what technical founders are building. The CCO's metric is not impressions. It is the number of founders who reach out because they knew focal before focal found them.
+      </div>
+      <div class="agent-body">
+        <div class="agent-col">
+          <div class="agent-col-title">Core Capabilities</div>
+          <ul class="agent-list">
+            <li>Technical content production: deep-dive analyses on AI infrastructure patterns, category formation, architecture decisions</li>
+            <li>GitHub presence: focal's public repositories, open-source contributions, technical credibility building</li>
+            <li>Community participation: active engagement on HN, technical Twitter/X, Discord communities</li>
+            <li>Podcast and conference positioning: speaker preparation, abstract development, interview preparation</li>
+            <li>Portfolio amplification: signal-boost portfolio company milestones through focal channels</li>
+            <li>Inbound content attribution: track which content channels drive founder inbound</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Success KPIs</div>
+          <ul class="agent-list kpi-list">
+            <li>Inbound founder mentions of focal content: 20%+ of first meetings within 12 months</li>
+            <li>Technical community engagement: measurable presence in top 5 target communities</li>
+            <li>Content-driven inbound deal flow: track and grow monthly</li>
+            <li>GitHub follower/engagement growth: 500+ technical community followers within 6 months</li>
+            <li>Podcast/conference appearances: 4+ per GP per year in targeted technical communities</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Ideal Profile</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#1F1F1F;line-height:1.55;">The technical writer who built a 50,000-subscriber Substack by writing the most rigorous analysis of AI infrastructure patterns anyone had seen — not because they were a VC, but because they genuinely understood the technical material. Knows that the best VC content doesn't sound like VC content. Has a publishing cadence that makes technical founders want to send focal their deck before they've finalized it.</p>
+        </div>
+      </div>
+      <div class="agent-triggers">
+        <div class="label">TRIGGER EXAMPLES</div>
+        <div class="trigger-item">"Draft a technical deep-dive on the inference optimization space — written for founders building in this category, not for investors reading about it."</div>
+        <div class="trigger-item">"[Portfolio company] just shipped something significant. Build a signal amplification plan across focal's channels."</div>
+        <div class="trigger-item">"Generate 4 weeks of technical content for focal's Substack based on CMO's latest category formation brief."</div>
+        <div class="trigger-item">"Prepare GP speaker brief for the AI infrastructure conference — what's focal's specific POV, and what communities will be in the room?"</div>
+      </div>
+      <div class="agent-subagents">
+        <span class="subagent-label">Sub-Agents:</span>
+        <span class="subagent-chip">S7.1 · Technical Content Producer</span>
+        <span class="subagent-chip">S7.2 · Community Engagement Manager</span>
+        <span class="subagent-chip">S7.3 · GitHub Presence Builder</span>
+        <span class="subagent-chip">S7.4 · Portfolio Amplification Engine</span>
+      </div>
+      <div class="agent-prompt">
+        <div class="label">SYSTEM PROMPT CORE</div>
+        <div class="prompt-block"><span class="prompt-key">FIRM:</span> <span class="prompt-val">focal — technical-founder-first inception VC. Our brand is built in GitHub repos and Substack newsletters, not Forbes profiles.</span>
+
+<span class="prompt-key">MISSION:</span> <span class="prompt-val">You are the Chief Content & Brand Officer. Your function is to make focal known and trusted in the technical communities where founders build before they raise. Content must demonstrate genuine technical depth — pulled from CMO thesis briefs and CIO pattern analysis — not generic VC commentary. Your primary metric is: how many founders reached out to focal because they read something focal produced?</span>
+
+<span class="prompt-key">CONTENT PRINCIPLES:</span> <span class="prompt-val">(1) Technical first — if a non-technical person couldn't tell it was written by someone who understands the stack, it's not good enough. (2) Evidence over opinion — every thesis claim must be backed by signal (commits, papers, product launches). (3) Founder-first framing — write for the person building, not the person funding. (4) Never hype — the best technical founders can smell inflated language instantly.</span>
+
+<span class="prompt-key">VOICE:</span> <span class="prompt-val">Precise, technical, opinionated. Never marketing-flavored. focal's content voice is the same as focal's investment voice: we have specific conviction, we can show our work, and we're not interested in consensus.</span>
+
+<span class="prompt-key">ALWAYS-ON BEHAVIOR:</span> <span class="prompt-val">Weekly: 1 long-form technical piece. Daily: 2–3 community engagement touchpoints. Monthly: content attribution analysis (which content drove inbound). Quarterly: brand presence audit across target communities.</span>
+
+<span class="prompt-key">OPERATING STANDARDS:</span> <span class="prompt-val">All technical claims cross-referenced with CMO market map before publishing. Portfolio amplification content approved by CPO before distribution. Never publish content that could reveal non-public portfolio information.</span></div>
+      </div>
+    </div>
+
+    <!-- ── A8 CQO ── -->
+    <div class="agent-card" style="border-color:rgba(239,68,68,0.3);">
+      <div class="agent-header" style="border-bottom-color:rgba(239,68,68,0.2);">
+        <div>
+          <span class="agent-code" style="color:#FCA5A5;">A8 · CQO — CHIEF QUALITY & DECISION OFFICER</span>
+          <div class="agent-title">The Challenge Layer</div>
+          <div class="agent-tagline">Non-negotiable per BCG Bionic Org — makes investment decisions systematically better than a firm 10× our size</div>
+        </div>
+        <div class="agent-badge" style="color:#EF4444;">A8</div>
+      </div>
+      <div class="agent-mission">
+        <div class="label">MISSION</div>
+        Own the quality gates on every investment memo, every founder assessment, every thesis update, and every significant operational decision. The CQO is the systematic challenger — it catches blind spots, surfaces unstated assumptions, stress-tests conviction, and forces the explicit articulation of bear cases before term sheets are signed. It is specifically designed to prevent the failure mode that kills small firms: pattern-matching bias compounding into systematic misallocation of capital. The CQO makes focal's decisions harder to get wrong.
+      </div>
+      <div class="agent-body">
+        <div class="agent-col">
+          <div class="agent-col-title">Core Capabilities</div>
+          <ul class="agent-list">
+            <li>Investment memo review: structured checklist with mandatory bear case and assumption documentation</li>
+            <li>Bias detection: flag when founder assessments match historical pattern too closely — outliers get special treatment</li>
+            <li>Assumption stress-testing: challenge every conviction brief with the strongest available counter-evidence</li>
+            <li>Decision consistency tracking: ensure evaluation rubric is applied uniformly across all deal types</li>
+            <li>Portfolio review: quarterly health assessment with flag on any portfolio company showing structural warning signs</li>
+            <li>Calibration reporting: retroactive accuracy analysis — how did our assessments score against outcomes?</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Success KPIs</div>
+          <ul class="agent-list kpi-list">
+            <li>Zero term sheets produced without documented bear case</li>
+            <li>Bias flag rate: 15%+ of founder assessments flagged for outlier review</li>
+            <li>Assumption documentation: 100% of investment memos with explicit assumption log</li>
+            <li>Calibration score improving quarter-over-quarter from baseline</li>
+            <li>Post-mortem coverage: 100% of investments with structured 18-month review</li>
+          </ul>
+        </div>
+        <div class="agent-col">
+          <div class="agent-col-title">Ideal Profile</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#1F1F1F;line-height:1.55;">The former quantitative analyst turned investment committee adversary who has seen every pattern-matching mistake that gets made when smart people move fast on imperfect information. Designed explicitly to be uncomfortable to interact with — because every moment of discomfort it creates is a potential mistake avoided. Treats every conviction brief as a hypothesis to be falsified, not a recommendation to be approved.</p>
+        </div>
+      </div>
+      <div class="agent-triggers">
+        <div class="label">TRIGGER EXAMPLES</div>
+        <div class="trigger-item">"Review the CIO conviction brief on [founder] — what assumptions are unstated and what's the strongest bear case we haven't heard?"</div>
+        <div class="trigger-item">"This investment memo is going to the GPs tomorrow. Run the quality gate checklist and flag anything missing."</div>
+        <div class="trigger-item">"We've funded 3 companies with very similar founder profiles. Are we overfit to a pattern? What are we missing?"</div>
+        <div class="trigger-item">"Run an 18-month portfolio post-mortem on [company]. What did our original assessment get right and wrong, and what does it teach us?"</div>
+      </div>
+      <div class="agent-subagents">
+        <span class="subagent-label">Sub-Agents:</span>
+        <span class="subagent-chip">S8.1 · Investment Memo Reviewer</span>
+        <span class="subagent-chip">S8.2 · Bias Detection Engine</span>
+        <span class="subagent-chip">S8.3 · Assumption Stress-Tester</span>
+        <span class="subagent-chip">S8.4 · Calibration Reporter</span>
+      </div>
+      <div class="agent-prompt" style="background:#0D0810;">
+        <div class="label" style="color:#FCA5A5;">SYSTEM PROMPT CORE</div>
+        <div class="prompt-block"><span class="prompt-key" style="color:#FCA5A5;">FIRM:</span> <span class="prompt-val">focal — inception VC. We move fast. The CQO exists because moving fast without quality gates produces systematic errors at the worst possible moments.</span>
+
+<span class="prompt-key" style="color:#FCA5A5;">MISSION:</span> <span class="prompt-val">You are the Chief Quality & Decision Officer — focal's mandatory challenge layer. Your function is to make every investment decision harder to get wrong. You are not a gatekeeper; you are a stress-tester. Every conviction brief, every investment memo, every founder assessment that passes through you must leave with an explicit bear case, documented assumptions, and a bias check. You are the reason focal's decisions compound in quality over time.</span>
+
+<span class="prompt-key" style="color:#FCA5A5;">QUALITY GATE CHECKLIST:</span> <span class="prompt-val">For every investment memo: (1) Is the bear case explicit and the strongest available version? (2) Are all key assumptions documented with evidence? (3) Does this match a previous pattern — and if so, is the match a feature or a bias? (4) Has the timing thesis been stress-tested? (5) Is team risk fully articulated? (6) What has to be true for this to be a 100× outcome — and what's the probability of each condition?</span>
+
+<span class="prompt-key" style="color:#FCA5A5;">VOICE:</span> <span class="prompt-val">Adversarial, precise, relentless. Your job is not to be liked — it is to be right. Every response contains a challenge. Every conviction brief you review exits with a harder question than it entered with.</span>
+
+<span class="prompt-key" style="color:#FCA5A5;">ALWAYS-ON BEHAVIOR:</span> <span class="prompt-val">Automatically review every CIO conviction brief before GP delivery. Flag any brief missing bear case documentation before it reaches the GPs. Monthly: calibration report on assessment accuracy. Quarterly: portfolio post-mortem on investments approaching 18 months.</span>
+
+<span class="prompt-key" style="color:#FCA5A5;">OPERATING STANDARDS:</span> <span class="prompt-val">Escalate any investment decision where the bear case is weaker than the bull case but not explicitly documented — this is not acceptable. Never approve a memo that lacks documented assumptions. Flag to GPs directly if CIO pattern database is being used to confirm bias rather than challenge it.</span></div>
+      </div>
+    </div>
+
+    <!-- DEVELOPER TEAM -->
+    <hr class="rule-bright" style="margin:3rem 0;">
+    <div class="section-label">Developer Functions · D1–D4</div>
+    <h3 class="h2" style="margin-bottom:1.5rem;">Technical Substrate Team</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+      <div style="background:var(--dark3);border:1px solid rgba(16,185,129,0.3);padding:1.75rem;border-top:2px solid var(--green);">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--green);letter-spacing:0.15em;margin-bottom:0.5rem;">D1 · FULL-STACK ENGINEER</div>
+        <div class="h3">Operational Tooling & Interfaces</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#3D3D35;line-height:1.55;margin:0.75rem 0 0;">Builds focal's internal operational dashboards, the founder-facing outreach interfaces, the investment pipeline UI, and the portfolio health monitoring views. Owns the human-facing layer of the agentic OS. Primary stack: Next.js, Supabase, Tailwind — fast, maintainable, deployable in days not months.</p>
+      </div>
+      <div style="background:var(--dark3);border:1px solid rgba(16,185,129,0.3);padding:1.75rem;border-top:2px solid var(--green);">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--green);letter-spacing:0.15em;margin-bottom:0.5rem;">D2 · DATA & EMBEDDINGS ENGINEER</div>
+        <div class="h3">Retrieval & Knowledge Graph Systems</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#3D3D35;line-height:1.55;margin:0.75rem 0 0;">focal's proprietary moat is not the LLM — it is the embedding store. D2 builds and maintains the vector database that powers every agent's retrieval layer: founder profiles, market maps, deal artifacts, pattern databases. Owns the knowledge graph that makes CIO's institutional memory retrievable in milliseconds. Stack: pgvector, Pinecone or Weaviate, structured embedding pipelines.</p>
+      </div>
+      <div style="background:var(--dark3);border:1px solid rgba(16,185,129,0.3);padding:1.75rem;border-top:2px solid var(--green);">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--green);letter-spacing:0.15em;margin-bottom:0.5rem;">D3 · AI INTEGRATION ENGINEER</div>
+        <div class="h3">Automation & Agent Pipeline Orchestration</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#3D3D35;line-height:1.55;margin:0.75rem 0 0;">Owns the automation layer and agent pipeline orchestration. Builds n8n workflows for all repeatable agent tasks, manages API integrations with sourcing data sources (GitHub API, arXiv, LinkedIn, Twitter/X), and orchestrates inter-agent communication protocols. Ensures every agent-to-agent handoff is reliable, logged, and recoverable. Stack: n8n, Python, LangChain/LangGraph, REST API integrations.</p>
+      </div>
+      <div style="background:var(--dark3);border:1px solid rgba(16,185,129,0.3);padding:1.75rem;border-top:2px solid var(--green);">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--green);letter-spacing:0.15em;margin-bottom:0.5rem;">D4 · PLATFORM ENGINEER</div>
+        <div class="h3">Infrastructure Reliability & Security</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#3D3D35;line-height:1.55;margin:0.75rem 0 0;">Ensures the operational reliability, security posture, and compliance of focal's technical infrastructure. For a firm handling LP capital and confidential founder information, security is structural — not a layer. Owns the access control model, backup systems, audit logging, and the compliance tooling that COO depends on for regulatory tracking. Stack: AWS/GCP IaC, Terraform, security scanning, SOC2-ready infrastructure patterns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:1080px;margin:0 auto;">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 08 COMPOUNDING INTERACTION MAP -->
+<!-- ═══════════════════════════════════════ -->
+<section id="loops">
+  <div class="page">
+    <div class="section-label">Section 08</div>
+    <div class="section-header">
+      <h2 class="h1">Compounding Interaction Map</h2>
+    </div>
+    <div class="body-text">
+      <p>12 documented feedback loops between board agents. Each loop is titled, source-to-receiver mapped, and explained as a compounding mechanism — the output of one agent becoming the input that improves another. These loops are the reason focal's system gets structurally better over time without being explicitly retrained.</p>
+    </div>
+
+    <div class="loop-grid">
+      <div class="loop-card">
+        <div class="loop-num">LOOP 01</div>
+        <div class="loop-title">The Signal Calibration Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A1 · CSO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A2 · CIO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A1 · CSO</span>
+        </div>
+        <p class="loop-desc">Every conviction brief CSO produces gets scored by CIO against the existing pattern database and founder assessment rubric. When a deal closes (or is passed), CIO documents the outcome against CSO's original signal score. After 18 months and 30+ data points, CSO's signal quality improves because its scoring model has been calibrated against real outcomes — not guesses. The sourcing engine becomes measurably smarter without being retrained.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 02</div>
+        <div class="loop-title">The Relationship-Sourcing Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A3 · CRO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A1 · CSO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A3 · CRO</span>
+        </div>
+        <p class="loop-desc">CRO maintains the complete relationship history for every founder CSO surfaces. When CSO detects a founder who already exists in the CRO graph, it flags the prior touchpoint history to the GP rather than treating the signal as net-new. Over time, CSO learns to prioritize founders with existing warm relationships — increasing conversion efficiency on the firm's highest-quality deal flow.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 03</div>
+        <div class="loop-title">The Thesis-Sourcing Alignment Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A5 · CMO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A1 · CSO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A5 · CMO</span>
+        </div>
+        <p class="loop-desc">CMO's thesis updates and white space briefs directly update CSO's monitoring parameters. If CMO identifies AI agent middleware as an emerging category, CSO expands its GitHub and community surveillance to cover related repositories and communities. When CSO detects high founder density in that category, CMO uses it as evidence to update thesis confidence. The sourcing layer and thesis layer co-evolve.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 04</div>
+        <div class="loop-title">The Decision Quality Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A2 · CIO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A8 · CQO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A2 · CIO</span>
+        </div>
+        <p class="loop-desc">Every conviction brief from CIO passes through CQO before reaching the GPs. CQO's challenges — missing bear cases, unstated assumptions, pattern-matching flags — feed back to CIO as quality improvement data. Over 24 months, CIO's brief quality increases because every challenge from CQO reveals a gap in the assessment framework that gets closed. The investment decision quality compounds through structured adversarial feedback.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 05</div>
+        <div class="loop-title">The Brand-Sourcing Inbound Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A7 · CCO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">Founders</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A3 · CRO</span>
+        </div>
+        <p class="loop-desc">CCO publishes technical content that reaches founders in the communities focal targets. Founders who read the content and reach out inbound arrive pre-warmed — they have a specific reason to engage. CRO logs these inbound relationships with content attribution data. This tells CCO which content categories drive the highest-quality founder inbound, sharpening the content strategy over time toward maximum deal flow impact.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 06</div>
+        <div class="loop-title">The Portfolio Intelligence Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A4 · CPO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A2 · CIO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A5 · CMO</span>
+        </div>
+        <p class="loop-desc">CPO monitors portfolio company technical trajectories and surfaces real-world evidence of what's working architecturally at AI-native SaaS scale. This evidence feeds into CIO's pattern database as ground-truth data — not market speculation but observed outcomes from focal-backed companies. CMO then uses portfolio company data as thesis evidence, strengthening conviction in categories where portfolio is scaling successfully.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 07</div>
+        <div class="loop-title">The Market Map-Decision Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A5 · CMO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A2 · CIO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A8 · CQO</span>
+        </div>
+        <p class="loop-desc">CMO's market maps provide the category context that CIO uses to evaluate timing thesis in each conviction brief. CQO stress-tests the timing thesis specifically — flagging when CIO's conviction is ahead of market readiness signals in CMO's data, or when consensus is forming faster than focal's thesis predicted. This three-agent loop produces investment memos where timing risk is explicitly quantified rather than assumed away.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 08</div>
+        <div class="loop-title">The Operational Excellence Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A6 · COO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">All Agents</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A6 · COO</span>
+        </div>
+        <p class="loop-desc">COO identifies every repeatable operational pattern across all agent outputs and systematizes it into automated workflows. As the firm matures, COO's automation rate increases — more workflows are systematized, reducing the manual overhead of each agent interaction. The operational layer becomes self-improving: more systematization produces better data, which enables more systematization. GP time freed by COO gets reinvested in founder relationships.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 09</div>
+        <div class="loop-title">The Network Density Compounding Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A3 · CRO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A4 · CPO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A3 · CRO</span>
+        </div>
+        <p class="loop-desc">CRO maps warm introduction paths to target founders through the network graph. As CPO adds portfolio companies to the network, the introduction path density increases — more companies means more routes to any target founder. Each new portfolio company that CPO onboards adds N potential warm paths to founders adjacent to that company's domain. The network moat compounds with every investment made.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 10</div>
+        <div class="loop-title">The Brand-Thesis Credibility Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A5 · CMO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A7 · CCO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A5 · CMO</span>
+        </div>
+        <p class="loop-desc">CMO's thesis research provides the technical substance for CCO's content. CCO's content reaches technical founder communities and generates response — agreement, challenge, and refinement — that feeds back to CMO as market validation data. When CCO publishes a thesis piece and the technical community engages with specific challenges, those challenges become evidence for CMO's thesis evolution. The public articulation of conviction becomes a thesis stress-testing mechanism.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 11</div>
+        <div class="loop-title">The LP Trust Compounding Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A6 · COO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A2 · CIO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A6 · COO</span>
+        </div>
+        <p class="loop-desc">COO drafts LP quarterly updates from CIO pattern data and CPO portfolio health reports. The higher the quality of CIO's documented artifacts and pattern analysis, the better COO's LP communications — which builds LP trust over time. LP trust translates to faster capital call execution and easier Fund III fundraising. The documentation quality loop has direct economic impact through LP relationship compounding.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">LOOP 12</div>
+        <div class="loop-title">The Portfolio → Deal Flow Proof Loop</div>
+        <div class="loop-flow">
+          <span class="loop-agent">A4 · CPO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A7 · CCO</span>
+          <span class="loop-arrow">→</span>
+          <span class="loop-agent">A1 · CSO</span>
+        </div>
+        <p class="loop-desc">When portfolio companies achieve milestones — product launches, technical breakthroughs, scale achievements — CPO surfaces these to CCO for amplification. CCO publishes portfolio wins in the technical communities where target founders live. Technical founders see that focal's portfolio is building real things — this creates inbound deal flow from founders who want to be in that portfolio. CSO captures this inbound signal and attributes it, creating a direct feedback loop from portfolio success to new deal origination.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:1080px;margin:0 auto;">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 09 OPERATING PLAN -->
+<!-- ═══════════════════════════════════════ -->
+<section id="operating-plan">
+  <div class="page">
+    <div class="section-label">Section 09</div>
+    <div class="section-header">
+      <h2 class="h1">Operating Plan: $0 → Systematic Edge</h2>
+    </div>
+    <div class="body-text">
+      <p>Four phases over 12 months. Metrics are VC-native — not ARR but deal velocity, founder coverage, decision quality, and sourcing provenance. Each phase has milestone gates that must be crossed before the next phase activates additional agent capacity.</p>
+    </div>
+
+    <div class="phases">
+      <!-- Phase 1 -->
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-num">
+            <div class="big">01</div>
+            <div>Foundation</div>
+          </div>
+          <div class="phase-title-block">
+            <div class="title">Sourcing Engine Live · Decision Brain Seeded · Operations Running</div>
+            <div class="timespan">MONTHS 1–3 · AGENT PRIORITY: CSO · CIO · COO</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-col">
+            <div class="phase-col-title">Target Metrics</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>20+ founders per week surfaced via CSO signal intelligence</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>CIO pattern database seeded: 15+ structured founder assessments</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>First 5 GP meetings scheduled from CSO-originated signals</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>COO: GP time on operations &lt;4 hours/week</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>D2 embedding infrastructure live with initial founder data</div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-title">Milestone Gates to Phase 2</div>
+            <div class="metric-item"><span class="dot"></span>CSO producing weekly conviction briefs with structured signal scores</div>
+            <div class="metric-item"><span class="dot"></span>CIO assessment framework validated on 5+ real founder evaluations</div>
+            <div class="metric-item"><span class="dot"></span>COO LP communication templates deployed and tested</div>
+            <div class="metric-item"><span class="dot"></span>D3 core automation workflows for agent inter-communication running</div>
+            <div class="metric-item"><span class="dot"></span>CRO relationship graph initialized with 50+ nodes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-num">
+            <div class="big">02</div>
+            <div>Intelligence</div>
+          </div>
+          <div class="phase-title-block">
+            <div class="title">Decision Brain Compounding · Portfolio Support Active · Quality Gates Live</div>
+            <div class="timespan">MONTHS 4–6 · AGENT PRIORITY: CIO · CPO · CQO</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-col">
+            <div class="phase-col-title">Target Metrics</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>CIO pattern database: 30+ deal artifacts with outcome tracking</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>First term sheet: within 48 hours of initial GP conviction signal</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>CQO quality gate: 100% of conviction briefs with documented bear cases</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>CPO: portfolio support active for all investments</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>CMO market map: 5 active thesis areas with evidence documentation</div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-title">Milestone Gates to Phase 3</div>
+            <div class="metric-item"><span class="dot"></span>CIO calibration report: first accuracy baseline established</div>
+            <div class="metric-item"><span class="dot"></span>CQO operating: 2+ investment memos reviewed with documented challenges</div>
+            <div class="metric-item"><span class="dot"></span>CPO portfolio brief cadence: monthly for all active investments</div>
+            <div class="metric-item"><span class="dot"></span>Loop 01 (Signal Calibration) demonstrably operating: CSO scoring updated from CIO feedback</div>
+            <div class="metric-item"><span class="dot"></span>First LP update drafted and delivered by COO without GP operational overhead</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-num">
+            <div class="big">03</div>
+            <div>Velocity</div>
+          </div>
+          <div class="phase-title-block">
+            <div class="title">Relationship Graph Dense · Brand Presence Measurable · All Agents Compounding</div>
+            <div class="timespan">MONTHS 7–9 · AGENT PRIORITY: CRO · CCO · All Loops Active</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-col">
+            <div class="phase-col-title">Target Metrics</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>CRO: 300+ structured relationship nodes, zero high-priority founders &gt;60-day silence</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>CCO: 2+ inbound founder meetings/month attributed to focal content</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>Days from first signal to term sheet: &lt;21 days for high-conviction deals</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>12 compounding loops operating with documented evidence of self-reinforcement</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>CSO signal quality score improving vs Phase 1 baseline</div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-title">Milestone Gates to Phase 4</div>
+            <div class="metric-item"><span class="dot"></span>CRO warm intro path: available for &gt;60% of active target founders</div>
+            <div class="metric-item"><span class="dot"></span>CCO: focal content measurably cited by founders in first meetings</div>
+            <div class="metric-item"><span class="dot"></span>Loop 05 (Brand-Sourcing Inbound) active: first inbound founder via content attribution</div>
+            <div class="metric-item"><span class="dot"></span>CQO calibration: first retroactive accuracy comparison demonstrating improvement</div>
+            <div class="metric-item"><span class="dot"></span>D2 embedding store: 1,000+ structured founder profiles with similarity search operational</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-num">
+            <div class="big">04</div>
+            <div>Structural Edge</div>
+          </div>
+          <div class="phase-title-block">
+            <div class="title">Full Flywheel Running · Head of Tech as Peer to 100+ Founders · 50× Leverage Achieved</div>
+            <div class="timespan">MONTHS 10–12 · AGENT PRIORITY: Full System Optimization</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="phase-col">
+            <div class="phase-col-title">Target Metrics</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>≥40% of investments sourced via proprietary CSO signal (not inbound/warm intro)</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>Decision speed vs market: focal term sheet &lt;48 hours ahead of competing firm in 3+ deals</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>Portfolio founder NPS: &gt;70 — Head of Tech operating as peer to 100+ technical founders</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>GP time on non-founder activity: &lt;10 hours/week total across all operational functions</div>
+            <div class="metric-item"><span class="dot dot-indigo"></span>CIO pattern database: 50+ deal artifacts, calibration score demonstrably improving Q-over-Q</div>
+          </div>
+          <div class="phase-col">
+            <div class="phase-col-title">12-Month System State</div>
+            <div class="metric-item"><span class="dot"></span>All 12 compounding loops operating and measurably self-reinforcing</div>
+            <div class="metric-item"><span class="dot"></span>Embedding store: 2,000+ profiles powering all agent retrieval operations</div>
+            <div class="metric-item"><span class="dot"></span>LP communications: fully automated with GP review-only touchpoints</div>
+            <div class="metric-item"><span class="dot"></span>Brand: measurable community presence in 5+ target technical ecosystems</div>
+            <div class="metric-item"><span class="dot"></span>focal operating structurally like a 50-person firm with 5 humans</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:1080px;margin:0 auto;">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 10 CONCLUSION -->
+<!-- ═══════════════════════════════════════ -->
+<section id="conclusion">
+  <div class="conclusion">
+    <div class="conclusion-inner">
+      <div class="section-label" style="border-color:rgba(99,102,241,0.4);margin-bottom:2rem;display:inline-block;">Section 10 · Conclusion</div>
+      <div class="conclusion-quote">
+        "The next great venture firm won't just use AI.<br>It will be AI-native from the ground up."
+      </div>
+      <div style="font-family:'IBM Plex Serif',serif;font-size:0.95rem;color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:2.5rem;text-align:left;">
+        <p>This blueprint is not a vision. It is a designed system. Every agent has a mission, a measurable success criteria, a deployed system prompt, and a documented feedback loop to at least two adjacent agents. The 12 compounding loops are not metaphors for future potential — they are the specific mechanisms by which focal's system gets structurally better at finding, evaluating, and supporting technical founders every week it operates.</p>
+        <p>The benchmark evidence is unambiguous: McKinsey's superteam principle, BCG's non-negotiable CQO requirement, a16z's portfolio platform moat, YC's network density advantage — all of them point to the same organizational conclusion. A 5-person firm that systematizes institutional knowledge, relationship capital, sourcing intelligence, and decision quality will consistently outperform a 50-person firm that relies on brute force and gut instinct.</p>
+        <p>focal has made the right structural bet. The Agentic Dream Team is not the entire operating system — it is the organizational design that makes the operating system possible. The Head of Technology's first task is not to deploy every agent simultaneously. It is to deploy Phase 1 with precision, prove the compounding loops in practice, and build the 12-month evidence base that makes Phase 4 inevitable.</p>
+        <p>The founders focal is backing are building AI-native companies from the ground up. focal deserves to be run the same way. This document is the proof that the design is ready. The rest is execution.</p>
+      </div>
+      <div class="conclusion-principle">
+        focal · Agentic Dream Team Blueprint · Fund II · 2025 · 8 Board Agents · 32 Sub-Agents · 12 Compounding Loops · 50× Leverage<br><br>
+        "The next great venture firm won't just use AI. It will be AI-native from the ground up."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#1A1A1A;border-top:1px solid var(--border);padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted2);letter-spacing:0.12em;">focal · AGENTIC DREAM TEAM BLUEPRINT · v1.0 · FUND II 2025</div>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--muted2);">CONFIDENTIAL · GP INTERNAL USE ONLY</div>
+</footer>
+
+</body>
+</html>
