@@ -18,10 +18,10 @@ My work sits at the intersection most companies can't staff internally: strategi
 | Stage | What happens |
 |---|---|
 | [Architecture Diagnosis Call](https://cal.com/mach2cloud/diagnosis-call) | 60-minute structured diagnostic. You leave with clarity on what's actually driving the problem regardless of what comes next. |
-| Architecture Audit | Deep analysis of your current platform against the WAF2p framework. Clear picture of risk, cost, and velocity impact. |
-| Blueprint & System Design | A concrete architecture design your team can execute without external dependency. |
-| Engineering Enablement | Hands-on guidance through implementation — decisions, reviews, unblocking. |
-| Fractional Principal Architect | Ongoing architecture leadership without the cost or ramp time of a full-time hire. |
+| [Architecture Audit](https://mach2.cloud/en/services#audit) | Deep analysis of your current platform against the WAF2p framework. Clear picture of risk, cost, and velocity impact. |
+| [Blueprint & System Design](https://mach2.cloud/en/services/#blueprint) | A concrete architecture design your team can execute without external dependency. |
+| [Engineering Enablement](https://mach2.cloud/en/services#enablement) | Hands-on guidance through implementation — decisions, reviews, unblocking. |
+| [Fractional Principal Architect](https://mach2.cloud/en/services#fractional) | Ongoing architecture leadership without the cost or ramp time of a full-time hire. |
 
 The Diagnosis Call is the only entry point. Every engagement starts there.
 
